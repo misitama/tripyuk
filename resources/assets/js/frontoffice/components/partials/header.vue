@@ -173,18 +173,18 @@
                                 <img class="second-icon-menu" src="frontoffice/icon/icon/tiket-pesawat.png">
                                 Tiket Pesawat
                             </router-link>
-                            <a class="dropdown-item second-menu-item" href="#">
+                            <router-link class="dropdown-item second-menu-item" :to="{name:'tiketkeretaapi'}">
                                 <img class="second-icon-menu" src="frontoffice/icon/icon/kereta-text.png">
                                 Tiket Kereta Api
-                            </a>
-                            <a class="dropdown-item second-menu-item" href="#">
+                            </router-link>
+                            <router-link class="dropdown-item second-menu-item" :to="{name:'tiketbus'}">
                                 <img class="second-icon-menu" src="frontoffice/icon/bus.png">
                                 Tiket Bus
-                            </a>
-                            <a class="dropdown-item second-menu-item" href="#">
+                            </router-link>
+                            <router-link class="dropdown-item second-menu-item" :to="{name:'tiketkapal'}">
                                 <img class="second-icon-menu" src="frontoffice/icon/kapal.png">
-                                Tiket Kapal
-                            </a>
+                                Tiket Bus
+                            </router-link>
                         </div>
                     </div>
                     <div class="col hover-dropdown">

@@ -10,6 +10,15 @@ import Pembayaran from './components/pembayaran/index.vue';
 import ProsesPembayaran from './components/pembayaran/proses-pembayaran.vue';
 import Sukses from './components/pembayaran/sukses.vue';
 
+// kereta api komponen
+import KeretaApi from './components/kai/kai-index.vue';
+
+// bus komponen
+import Bus from './components/bus/bus-index.vue';
+
+// kapal komponen
+import Kapal from './components/kapal/kapal-index.vue';
+
 import Promo from './components/promo/promo-index.vue';
 
 // footer menu
@@ -23,6 +32,8 @@ export default [
         name: 'home',
         component: Home
     },
+
+    // pesawat route
     {
         path : '/tiket-pesawat',
         name : 'tiketpesawat',
@@ -53,6 +64,29 @@ export default [
         name: 'pembayaran',
         component: Pembayaran
     },
+
+    // kereta api route
+    {
+        path : '/tiket-kereta-api',
+        name : 'tiketkeretaapi',
+        component : KeretaApi
+    },
+
+    // bus route
+    {
+        path : '/tiket-bus',
+        name : 'tiketbus',
+        component : Bus
+    },
+
+    // kapal route
+    {
+        path : '/tiket-kapal',
+        name : 'tiketkapal',
+        component : Kapal
+    },
+
+    // pembayaran route
     {
         path: '/proses-pembayaran',
         name: 'prosespembayaran',
@@ -63,6 +97,8 @@ export default [
         name: 'sukses',
         component: Sukses
     },
+
+    // route
     {
         path: '/how-to-book',
         name: 'howtobook',

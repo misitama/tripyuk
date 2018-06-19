@@ -39,7 +39,7 @@
 
     import DotNav from '../partials/dot-nav.vue';
     import ItemSlider from '../partials/item-slider.vue';
-    import TabBooking from './pesawat-slider-tab/tab-booking.vue';
+    import TabBooking from './kai-slider-tab/tab-booking.vue';
 
     export default {
 
