@@ -1,5 +1,22 @@
 <template>
-    
+    <div id="page-heading">
+
+        <ol class="breadcrumb">
+            <li>
+                <router-link :to="{name:'dashboard'}">Dashboard</router-link>
+            </li>
+            <li class="active">User</li>
+        </ol>
+
+        <h1>Users</h1>
+        <div class="options">
+            <div class="btn-toolbar">
+                <a href="#" @click.prevent="showModalForm('add')" class="btn btn-primary"><i
+                        class="fa fa-plus-square"></i> Add New User</a>
+            </div>
+        </div>
+
+    </div>
 
 </template>
 <script>

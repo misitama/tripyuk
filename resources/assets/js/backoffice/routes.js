@@ -8,6 +8,8 @@ import IndexMasterBedType from './components/masterbedtype/index.vue';
 import PageHeadingBedType from './components/masterbedtype/pageheading.vue';
 import IndexAirlineBook from './components/airlines/index.vue';
 import PageHeadingAirlineBook from './components/airlines/pageheading.vue';
+import MasterRestaurantType from './components/restauranttype/index.vue';
+import PartnerRegistration from './components/auth/registration.vue';
 
 
 export default [
@@ -20,6 +22,11 @@ export default [
         path:'/login',
         name:'login',
         component:Login
+    },
+    {
+        path:'/partner-registration',
+        name:'PartnerRegistration',
+        component:PartnerRegistration,
     },
     {
         path:'/dashboard',
@@ -58,6 +65,14 @@ export default [
         meta:{
             auth:true
         }
+    },
+    {
+      path:'/restaurant-type',
+      name:'MasterRestaurantType',
+      component:MasterRestaurantType,
+      meta:{
+          auth:true
+      }
     },
     {
         path:'/airlines-book',

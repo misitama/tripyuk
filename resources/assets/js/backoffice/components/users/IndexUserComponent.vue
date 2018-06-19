@@ -32,9 +32,7 @@
                                     <th data-column-id="email">Email</th>
                                     <th data-column-id="sex">Sex</th>
                                     <th data-column-id="name">Role Name</th>
-                                    <th data-column-id="province_name">Province</th>
-                                    <th data-column-id="regency_name">Regency</th>
-                                    <th data-column-id="district_name">District</th>
+                                    <th data-column-id="credit_point">Credit</th>
                                     <th data-column-id="phone">Phone</th>
                                     <th data-column-id="action" data-formatter="action" data-sortable="false">Action
                                     </th>
@@ -124,7 +122,7 @@
                                         <div class="form-group">
                                             <label for="province" class="col-md-3 control-label">Province</label>
                                             <div class="col-md-9">
-                                                <select class="form-control" id="province" v-model="provinceId">
+                                                <select class="form-control" id="province" v-model="provinceId" :disabled="disabledElement">
                                                     <option></option>
                                                     <option v-for="provinces in optProvince" :value="provinces.id">
                                                         {{provinces.label}}
@@ -136,7 +134,7 @@
                                             <label for="regencyId" class="col-md-3 control-label">Regency</label>
                                             <div class="col-md-9">
                                                 <select class="form-control" id="regencyId" name="regencyId"
-                                                        v-model="regencyId">
+                                                        v-model="regencyId" :disabled="disabledElement">
                                                     <option></option>
                                                     <option v-for="regencies in optRegency" :value="regencies.id">
                                                         {{regencies.label}}
@@ -147,24 +145,19 @@
                                         <div class="form-group">
                                             <label for="districtId" class="col-md-3 control-label">District</label>
                                             <div class="col-md-9">
-                                                <div v-if="state == 'detail'">
-                                                    <label class="control-label">{{districtName}}</label>
-                                                </div>
-                                                <div v-else>
-                                                    <select class="form-control" id="districtId" name="districtId"
-                                                            v-model="districtId">
-                                                        <option></option>
-                                                        <option v-for="districts in optDistrict" :value="districts.id">
-                                                            {{districts.label}}
-                                                        </option>
-                                                    </select>
-                                                </div>
+                                                <select class="form-control" id="districtId" name="districtId"
+                                                        v-model="districtId" :disabled="disabledElement">
+                                                    <option></option>
+                                                    <option v-for="districts in optDistrict" :value="districts.id">
+                                                        {{districts.label}}
+                                                    </option>
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label for="roleId" class="col-md-3 control-label">User Roles</label>
                                             <div class="col-md-9">
-                                                <select id="roleId" class="form-control" name="roleId" v-model="roleId">
+                                                <select id="roleId" class="form-control" name="roleId" v-model="roleId" :disabled="disabledElement">
                                                     <option></option>
                                                     <option v-for="roles in optRoles" :value="roles.id">
                                                         {{roles.label}}
@@ -355,16 +348,18 @@
             $('#provinceId').select2();
         },
         watch: {
-            provinceId: function () {
+            provinceId: function (val) {
                 let app = this;
-                if (app.isChangeSelect) {
+                if (val !==null) {
                     app.getRegency();
+                    console.log('tidak null');
                 }
             },
-            regencyId: function () {
+            regencyId: function (val) {
                 let app = this;
-                if (app.isChangeSelect) {
+                if (val!==null) {
                     app.getDistrict();
+                    console.log('tidak null');
                 }
             }
         },
@@ -439,10 +434,6 @@
                         e.preventDefault();
                         app.readData($(this).data('row-id'));
                         app.showModalForm('edit');
-                        app.getUserRole();
-                        app.getProvince();
-                        app.getRegency();
-                        app.getDistrict();
                         return false;
                     });
 
@@ -465,13 +456,10 @@
                         app.email = response.data.result.email;
                         app.phone = response.data.result.phone;
                         app.mobilePhone = response.data.result.mobilePhone;
-                        app.provinceName = response.data.result.provinceName;
+                        $('#provinceId').val(response.data.result.provinceId);
                         app.provinceId = response.data.result.provinceId;
-                        app.regencyName = response.data.result.regencyName;
                         app.regencyId = response.data.result.regencyId;
-                        app.districtName = response.data.result.districtName;
                         app.districtId = response.data.result.districtId;
-                        app.roleName = response.data.result.roleName;
                         app.roleId = response.data.result.roleId;
                         app.isActive = response.data.result.isActive;
                         app.isBlocked = response.data.result.isBlocked;
@@ -480,6 +468,7 @@
                         app.updatedAt = response.data.result.updatedAt;
                         app.createdBy = response.data.result.createdBy;
                         app.lastModifiedBy = response.data.result.lastModifiedBy;
+
                         $('body').waitMe('hide');
                     })
                     .catch((error) => {
@@ -505,7 +494,7 @@
                 } else {
                     app.modalTitle = 'Detail User Data';
                     app.disabledElement = true;
-                    app.isChangeSelect = false;
+                    app.isChangeSelect = true;
                 }
 
                 $('#modalUser').on('shown.bs.modal', function () {
@@ -518,10 +507,6 @@
                 app.state = 'edit';
                 app.disabledElement = false;
                 app.modalTitle = 'Edit Existing User';
-                app.getRole();
-                app.getProvince();
-                app.getRegency();
-                app.getDistrict();
             },
             saveData: function () {
                 runWaitMe('body', 'progressBar', 'Saving data, please wait...');
@@ -572,6 +557,7 @@
                         });
                     })
                     .catch((error) => {
+                        loading.hide();
                         console.log(error);
                     });
             },
@@ -590,52 +576,51 @@
                         });
                     })
                     .catch((error) => {
-                        console.log(error);
                         loading.hide();
+                        console.log(error);
                     });
             },
             getRegency: function () {
                 let app = this;
-                let loading = app.$loading.show();
-                let url = '/regency/read-by-province/' + app.provinceId;
-                app.$http.get(url)
-                    .then((response) => {
-                        loading.hide();
-                        app.optRegency = response.data.result;
-                        $('#regencyId').select2({
-                            width: '100%',
-                            placeholder: 'Choose regency'
-                        }).on('change', function () {
-                            app.regencyId = $(this).val();
-                            app.isChangeSelect = true;
+                let url;
+                if(app.provinceId !=''){
+                    url = '/regency/read-by-province/' + app.provinceId;
+                    app.$http.get(url)
+                        .then((response) => {
+                            app.optRegency = response.data.result;
+                            $('#regencyId').select2({
+                                width: '100%',
+                                placeholder: 'Choose regency'
+                            }).on('change', function () {
+                                app.regencyId = $(this).val();
+                                app.isChangeSelect = true;
+                            });
+                        })
+                        .catch((error) => {
+                            console.log(error);
                         });
-                    })
-                    .catch((error) => {
-                        loading.hide();
-                        console.log(error);
-                    });
+                }
+
             },
             getDistrict: function () {
                 var app = this;
-                let loading = app.$loading.show();
                 let url = '/district/read-by-regency/' + app.regencyId;
-
-                app.$http.get(url)
-                    .then((response) => {
-                        loading.hide();
-                        app.optDistrict = response.data.result;
-                        $('#districtId').select2({
-                            width: '100%',
-                            placeholder: 'Choose districts'
-                        }).on('change', function () {
-                            app.districtId = $(this).val();
+                if(app.regencyId !=''){
+                    app.$http.get(url)
+                        .then((response) => {
+                            app.optDistrict = response.data.result;
+                            $('#districtId').select2({
+                                width: '100%',
+                                placeholder: 'Choose districts'
+                            }).on('change', function () {
+                                app.districtId = $(this).val();
+                            });
+                        })
+                        .catch((error) => {
+                            console.log(error);
                         });
-                    })
-                    .catch((error) => {
-                        loading.hide();
-                        console.log(error);
-                    });
 
+                }
             },
 
         }

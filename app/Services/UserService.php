@@ -75,7 +75,9 @@ class UserService extends BaseService
                 'provinceId'=>$input['provinceId'],
                 'regencyId'=>$input['regencyId'],
                 'districtId'=>$input['districtId'],
-                'activationKey'=>bcrypt($activationKey)
+                'activationKey'=>bcrypt($activationKey),
+                'isActive'=>$input['isActive'],
+                'isBlocked'=>$input['isBlocked']
             ];
             if(!$this->userRepository->create($param)){
                 $message = ['Failed register new user'];

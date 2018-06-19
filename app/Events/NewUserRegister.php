@@ -16,16 +16,20 @@ class NewUserRegister
 
     private $email;
     private $activationKey;
+    private $userLevel;
+    private $password;
 
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct($email,$activationKey)
+    public function __construct($email,$activationKey,$userLevel,$password)
     {
         $this->activationKey = $activationKey;
         $this->email = $email;
+        $this->userLevel = $userLevel;
+        $this->password = $password;
     }
 
     /**
@@ -53,6 +57,23 @@ class NewUserRegister
     {
         return $this->activationKey;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getUserLevel()
+    {
+        return $this->userLevel;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPassword()
+    {
+        return $this->password;
+    }
+
 
 
 }

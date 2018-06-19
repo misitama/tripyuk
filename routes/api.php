@@ -1,21 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
-
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
-//Route::middleware('auth:api')->get('/user', function (Request $request) {
-//    return $request->user();
-//});
-
 Route::post('auth/register', 'AuthController@register');
 Route::post('auth/login', 'AuthController@login');
 
@@ -54,6 +38,14 @@ Route::group(['middleware' => 'jwt.auth'], function () {
     Route::post('/bed-type/update', 'MasterBedTypeController@update');
     Route::post('/bed-type/delete/{id}', 'MasterBedTypeController@delete');
 
+
+    Route::post('/restaurant-type/pagination', 'RestaurantTypeController@pagination');
+    Route::post('/restaurant-type/create', 'RestaurantTypeController@create');
+    Route::get('/restaurant-type/read/{id}', 'RestaurantTypeController@read');
+    Route::get('/restaurant-type/all', 'RestaurantTypeController@showAll');
+    Route::post('/restaurant-type/update', 'RestaurantTypeController@update');
+    Route::post('/restaurant-type/delete/{id}', 'RestaurantTypeController@delete');
+
     Route::post('/get-air-lines-list', 'ApiDarmawisataController@getAirLineList');
     Route::post('/get-nationality-list', 'ApiDarmawisataController@getNationalityList');
     Route::post('/get-air-lines-routes', 'ApiDarmawisataController@getAirLineRoutes');
@@ -73,31 +65,30 @@ Route::group(['middleware' => 'jwt.refresh'], function () {
 });
 
 /* tiket pesawata */
+Route::get('get-token', 'PesawatController@getTokenTiketCom');
 Route::get('get-all-airport', 'PesawatController@getAllAirPort');
 Route::get('search-flight/{departId}/{arrivalId}/{paxAdult}/{paxChildren}/{paxInfant}/{goDate}/{roundTrip}/{returnDate}', [
-    'as'    => 'searchFlight',
-    'uses'  => 'CariPesawatController@searchFlight'
+    'as' => 'searchFlight',
+    'uses' => 'CariPesawatController@searchFlight'
 ]);
 Route::get('flight-detail/{id}/{departId}/{arrivalId}/{paxAdult}/{paxChildren}/{paxInfant}/{goDate}/{roundTrip}/{returnDate}/{token}', [
-    'as'    => 'detailFlight',
-    'uses'  => 'DetailPenerbangan@detailPenerbangan'
+    'as' => 'detailFlight',
+    'uses' => 'DetailPenerbangan@detailPenerbangan'
 ]);
 Route::get('flight-detail-order/{id}/{flightId}/{departId}/{arrivalId}/{paxAdult}/{paxChildren}/{paxInfant}/{goDate}/{roundTrip}/{returnDate}/{token}', [
-    'as'    => 'detailFlightOrder',
-    'uses'  => 'FlightDetailOrder@flightDetailOrder'
+    'as' => 'detailFlightOrder',
+    'uses' => 'FlightDetailOrder@flightDetailOrder'
 ]);
 Route::post('add-order/{id}/{flightId}/{departId}/{arrivalId}/{paxAdult}/{paxChildren}/{paxInfant}/{goDate}/{roundTrip}/{returnDate}/{token}', [
-    'as'    => 'addOrder',
-    'uses'  => 'OrderPesawatController@addOrder'
+    'as' => 'addOrder',
+    'uses' => 'OrderPesawatController@addOrder'
 ]);
 Route::get('order/{token}', [
-    'as'    => 'orderPesawat',
-    'uses'  => 'OrderPesawatController@orderPesawat'
+    'as' => 'orderPesawat',
+    'uses' => 'OrderPesawatController@orderPesawat'
 ]);
 Route::get('delete-order/{orderDetailId}/{token}', [
-    'as'    => 'deleteOrder',
-    'uses'  => 'OrderPesawatController@deleteOrderData'
+    'as' => 'deleteOrder',
+    'uses' => 'OrderPesawatController@deleteOrderData'
 ]);
-
-Route::get('get-token', 'KapalController@loginApi');
 /***/

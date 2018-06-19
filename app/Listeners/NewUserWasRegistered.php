@@ -29,7 +29,7 @@ class NewUserWasRegistered
     {
         $recipient = $event->getEmail();
 
-        Mail::send(['html'=>'backoffice.mails.newuserregister'],['email'=>$event->getEmail(),'activationKey'=>$event->getActivationKey()], function ($message) use ($recipient){
+        Mail::send(['html'=>'backoffice.mails.newuserregister'],['email'=>$event->getEmail(),'activationKey'=>$event->getActivationKey(),'password'=>$event->getPassword(),'level'=>$event->getUserLevel()], function ($message) use ($recipient){
             $message->from(env('MAIL_USERNAME'),'Tripyuk');
             $message->to($recipient)->subject('Tripyuk New User Activation Code | no-reply');
         });

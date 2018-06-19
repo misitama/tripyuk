@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+
 //
 ///*
 //|--------------------------------------------------------------------------
@@ -35,6 +37,13 @@ Route::group(['domain'=>'backoffice.tripyuk.com'],function (){
     });
 });
 
-Route::any('/',function (){
+Route::get('/',function (){
     return view('frontoffice.main');
+});
+
+Route::get('/test-mail',function (){
+    Mail::send(['html'=>'backoffice.mails.newuserregister'],['email'=>'admin@admin.com','activationKey'=>'activ key','password'=>'pass','level'=>'level'], function ($message){
+        $message->from('postmaster@mail.tripyuk.com','Tripyuk');
+        $message->to('my.ant2008@gmail.com')->subject('Tripyuk New User Activation Code | no-reply');
+    });
 });

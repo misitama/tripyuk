@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use SoapBox\Formatter\Formatter;
 
 use Curl;
 
@@ -53,6 +54,9 @@ class KapalController extends Controller
         // ->asJsonResponse(true)
         ->returnResponseObject()
         ->get();
+
+        // $xmlString = new SimpleXMLElement($response->content);
+        // $json = Formatter::make($xml, Formatter::XML)->toJson();
 
         return $response->content;
         // return $xmlString->__toString();
