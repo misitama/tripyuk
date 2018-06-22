@@ -2,7 +2,7 @@
 
     <div>
         <!-- header -->
-        <div class="header">
+        <div class="header sticky-bar">
 
             <!-- top bar -->
             <div class="pt-1 bg-utama">
@@ -24,7 +24,13 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ml-auto fa-ul">
                             <li class="nav-item">
-                                <a class="nav-link" href="#"><span class="icon-menu"><img src="frontoffice/icon/promo.png"/></span> Blog <span class="sr-only">(current)</span></a>
+                                <router-link class="nav-link" :to="{ name: 'blog' }">
+                                    <span class="icon-menu">
+                                        <img src="frontoffice/icon/promo.png"/>
+                                    </span>
+                                    Blog
+                                    <span class="sr-only">(current)</span>
+                                </router-link>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#"><span class="icon-menu"><img src="frontoffice/icon/cek-pesanan.png"/></span> Cek Pesanan <span class="sr-only">(current)</span></a>
@@ -104,7 +110,7 @@
                                                                 <label for="password">Password</label>
                                                                 <a class="float-right" href="#">Lupa Password?</a>
                                                                 <div class="clearfix"></div>
-                                                                <input class="form-control" type="password" name="password" value="" placeholder="Email/No Handphone">
+                                                                <input class="form-control" type="password" name="password" value="" placeholder="Password">
                                                             </div>
 
                                                             <div class="col-lg-12">
@@ -129,12 +135,51 @@
                                         </div>
                                         <div class="tab-pane" id="Register">
 
-                                            Register Tab
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <h5>Daftar Akun Baru</h5>
+                                                    <form class="mt-3" action="index.html" method="post">
+                                                        <div class="row">
+                                                            <div class="form-group col-lg-6">
+                                                                <label for="email">Nama Depan</label>
+                                                                <input class="form-control" type="text" name="namaDepan" value="" placeholder="Nama Depan">
+                                                            </div>
+                                                            <div class="form-group col-lg-6">
+                                                                <label for="email">Nama Belakang</label>
+                                                                <input class="form-control" type="text" name="namaBelakang" value="" placeholder="Nama Belakang">
+                                                            </div>
+
+                                                            <div class="form-group col-lg-12">
+                                                                <label for="email">Email/No Handphone</label>
+                                                                <input class="form-control" type="email" name="email" value="" placeholder="Email/No Handphone">
+                                                            </div>
+
+                                                            <div class="form-group col-lg-12">
+                                                                <label for="password">Password</label>
+                                                                <input class="form-control" type="password" name="password" value="" placeholder="Password">
+                                                            </div>
+
+                                                            <div class="col-lg-12">
+                                                                <div class="row no-gutters align-items-center">
+                                                                    <div class="form-group col-lg-6">
+                                                                        <span>Sudah Punya Akun?</span>
+                                                                        <a href="#">Masuk</a>
+                                                                    </div>
+
+                                                                    <div class="form-group col-lg-6">
+                                                                        <input class="form-control btn btn-primary" type="submit" name="submit" value="Register">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                    </form>
+                                                </div>
+
+                                            </div>
 
                                         </div>
                                     </div>
-
-
 
                                 </div>
 
@@ -183,7 +228,7 @@
                             </router-link>
                             <router-link class="dropdown-item second-menu-item" :to="{name:'tiketkapal'}">
                                 <img class="second-icon-menu" src="frontoffice/icon/kapal.png">
-                                Tiket Bus
+                                Tiket Kapal
                             </router-link>
                         </div>
                     </div>
@@ -195,21 +240,41 @@
                             Umroh & Haji
                         </a>
                         <div class="hover-dropdown-menu dropdown-w-300" aria-labelledby="tiketMenuDropdown">
-                            <router-link class="dropdown-item second-menu-item" :to="{name:'tiketpesawat'}">
+                            <router-link class="dropdown-item second-menu-item" :to="{name:'haji'}">
                                 <img class="second-icon-menu" src="frontoffice/icon/icon/tiket-pesawat.png">
                                 Haji
                             </router-link>
-                            <a class="dropdown-item second-menu-item" href="#">
+                            <router-link class="dropdown-item second-menu-item" :to="{name:'umroh'}">
                                 <img class="second-icon-menu" src="frontoffice/icon/icon/kereta-text.png">
                                 Umroh
-                            </a>
+                            </router-link>
+                        </div>
+                    </div>
+                    <div class="col hover-dropdown">
+                        <a class="second-menu dropdown-toggle pt-2 pb-2" href="#" id="umrohHajiMenuDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="icon-menu-secondary">
+                                <img src="frontoffice/icon/icon/tour-text.png" alt="">
+                            </span>
+                            Tour
+                        </a>
+                        <div class="hover-dropdown-menu dropdown-w-300" aria-labelledby="tiketMenuDropdown">
+                            <router-link class="dropdown-item second-menu-item" :to="{name:'tourdomestik'}">
+                                <img class="second-icon-menu" src="frontoffice/icon/icon/tiket-pesawat.png">
+                                Domestik
+                            </router-link>
+                            <router-link class="dropdown-item second-menu-item" :to="{name:'tourinternational'}">
+                                <img class="second-icon-menu" src="frontoffice/icon/icon/kereta-text.png">
+                                International
+                            </router-link>
                         </div>
                     </div>
                     <div class="col dropdown">
-                        <a class="second-menu pt-2 pb-2" href="#"><span class="icon-menu-secondary"><img src="frontoffice/icon/icon/tour-text.png" alt=""></span> Tour</a>
-                    </div>
-                    <div class="col dropdown">
-                        <a class="second-menu pt-2 pb-2" href="#"><span class="icon-menu-secondary"><img src="frontoffice/icon/icon/hotel-text.png" alt=""></span> Hotel </a>
+                        <router-link class="second-menu pt-2 pb-2" :to="{ name: 'hotel' }">
+                            <span class="icon-menu-secondary">
+                                <img src="frontoffice/icon/icon/hotel-text.png" alt="">
+                            </span>
+                            Hotel
+                        </router-link>
                     </div>
                     <div class="col hover-dropdown">
                         <a class="second-menu dropdown-toggle pt-2 pb-2" href="#" id="transportMenuDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -217,21 +282,31 @@
                             Transport
                         </a>
                         <div class="hover-dropdown-menu dropdown-w-300" aria-labelledby="transportMenuDropdown">
-                            <a class="dropdown-item second-menu-item" href="#">
-                                <img class="icon-menu" src="frontoffice/icon/shuttle.png">
-                                Shuttle
-                            </a>
-                            <a class="dropdown-item second-menu-item" href="#">
-                                <img class="icon-menu" src="frontoffice/icon/icon/rent-text.png">
-                                Rent
-                            </a>
+                            <router-link class="dropdown-item second-menu-item" :to="{name:'penjemputan'}">
+                                <img class="second-icon-menu" src="frontoffice/icon/shuttle.png">
+                                Penjemputan
+                            </router-link>
+                            <router-link class="dropdown-item second-menu-item" :to="{name:'rentalmobil'}">
+                                <img class="second-icon-menu" src="frontoffice/icon/icon/rent-text.png">
+                                Rental Mobil
+                            </router-link>
                         </div>
                     </div>
                     <div class="col dropdown">
-                        <a class="second-menu pt-2 pb-2" href="#"><span class="icon-menu-secondary"><img src="frontoffice/icon/icon/kuliner-text.png" alt=""></span> Kuliner</a>
+                        <router-link class="second-menu pt-2 pb-2" :to="{ name: 'kuliner' }">
+                            <span class="icon-menu-secondary">
+                                <img src="frontoffice/icon/icon/kuliner-text.png" alt="">
+                            </span>
+                            Kuliner
+                        </router-link>
                     </div>
                     <div class="col dropdown">
-                        <a class="second-menu pt-2 pb-2" href="#"><span class="icon-menu-secondary"><img src="frontoffice/icon/ecommerce.png" alt=""></span> E-Commerce</a>
+                        <router-link class="second-menu pt-2 pb-2" :to="{ name: 'toko' }">
+                            <span class="icon-menu-secondary">
+                                <img src="frontoffice/icon/ecommerce.png" alt="">
+                            </span>
+                            E-Commerce
+                        </router-link>
                     </div>
                 </div>
             </div>
@@ -239,6 +314,9 @@
 
         </div>
         <!-- end header -->
+        <div class="header-aliases">
+
+        </div>
     </div>
 
 </template>

@@ -8,7 +8,7 @@
                 <div class="row align-items-center">
 
                     <div data-aos="fade-right" data-aos-once="true" data-aos-delay="500" data-aos-duration="500" class="col-lg-12 pl-0 pr-0 text-center">
-                        <h3>Best Deals</h3>
+                        <h3>Promo di Tripyuk.com</h3>
                     </div>
 
                 </div>
@@ -17,106 +17,105 @@
 
                     <div class="col-lg-4 pb-3 pr-2 pl-2">
 
-                        <router-link :to="{ name: 'detailpromo' }">
+                        <a href="#">
                             <div class="link-image" style="background-image:url(frontoffice/img/promo/promo-1.jpg)">
                                 <div class="image-caption">
                                     <div class="text">
                                         <div class="inner-text text-center">
-                                            <h5 class="item">Promo Tiket Pesawat</h5>
+                                            <h5 class="item">Promo di Tripyuk.com</h5>
                                             <small class="item">Dapatkan tiket pesawat dengan harga miring</small>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </router-link>
+                        </a>
 
                     </div>
                     <div class="col-lg-4 pb-3 pr-2 pl-2">
 
-                        <router-link :to="{ name: 'detailpromo' }">
-                            <div class="link-image" style="background-image:url(frontoffice/img/promo/promo-1.jpg)">
+                        <a href="#">
+                            <div class="link-image" style="background-image:url(frontoffice/img/promo/promo-7.jpg)">
                                 <div class="image-caption">
                                     <div class="text">
                                         <div class="inner-text text-center">
-                                            <h5 class="item">Promo Tiket Pesawat</h5>
+                                            <h5 class="item">Promo di Tripyuk.com</h5>
                                             <small class="item">Dapatkan tiket pesawat dengan harga miring</small>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </router-link>
+                        </a>
 
                     </div>
                     <div class="col-lg-4 pb-3 pr-2 pl-2">
 
-                        <router-link :to="{ name: 'detailpromo' }">
-                            <div class="link-image" style="background-image:url(frontoffice/img/promo/promo-1.jpg)">
+                        <a href="#">
+                            <div class="link-image" style="background-image:url(frontoffice/img/promo/promo-3.jpg)">
                                 <div class="image-caption">
                                     <div class="text">
                                         <div class="inner-text text-center">
-                                            <h5 class="item">Promo Tiket Pesawat</h5>
+                                            <h5 class="item">Promo di Tripyuk.com</h5>
                                             <small class="item">Dapatkan tiket pesawat dengan harga miring</small>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </router-link>
+                        </a>
 
                     </div>
                     <div class="col-lg-4 pb-3 pr-2 pl-2">
 
-                        <router-link :to="{ name: 'detailpromo' }">
-                            <div class="link-image" style="background-image:url(frontoffice/img/promo/promo-1.jpg)">
+                        <a href="#">
+                            <div class="link-image" style="background-image:url(frontoffice/img/promo/promo-4.jpg)">
                                 <div class="image-caption">
                                     <div class="text">
                                         <div class="inner-text text-center">
-                                            <h5 class="item">Promo Tiket Pesawat</h5>
+                                            <h5 class="item">Promo di Tripyuk.com</h5>
                                             <small class="item">Dapatkan tiket pesawat dengan harga miring</small>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </router-link>
+                        </a>
 
                     </div>
                     <div class="col-lg-4 pb-3 pr-2 pl-2">
 
-                        <router-link :to="{ name: 'detailpromo' }">
-                            <div class="link-image" style="background-image:url(frontoffice/img/promo/promo-1.jpg)">
+                        <a href="#">
+                            <div class="link-image" style="background-image:url(frontoffice/img/promo/promo-5.jpg)">
                                 <div class="image-caption">
                                     <div class="text">
                                         <div class="inner-text text-center">
-                                            <h5 class="item">Promo Tiket Pesawat</h5>
+                                            <h5 class="item">Promo di Tripyuk.com</h5>
                                             <small class="item">Dapatkan tiket pesawat dengan harga miring</small>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </router-link>
+                        </a>
 
                     </div>
                     <div class="col-lg-4 pb-3 pr-2 pl-2">
 
-                        <router-link :to="{ name: 'detailpromo' }">
-                            <div class="link-image" style="background-image:url(frontoffice/img/promo/promo-1.jpg)">
+                        <a href="#">
+                            <div class="link-image" style="background-image:url(frontoffice/img/promo/promo-6.jpg)">
                                 <div class="image-caption">
                                     <div class="text">
                                         <div class="inner-text text-center">
-                                            <h5 class="item">Promo Tiket Pesawat</h5>
+                                            <h5 class="item">Promo di Tripyuk.com</h5>
                                             <small class="item">Dapatkan tiket pesawat dengan harga miring</small>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </router-link>
+                        </a>
 
                     </div>
-
                     <div class="col-lg-12 pb-3 pr-2 pl-2 text-center">
 
-                        <router-link class="btn btn-primary" :to="{ name: 'promo' }">
-                            Lihat Semua Promo
-                        </router-link>
+                        <a href="#" class="btn btn-primary">
+                            Lihat Semua Promo di Tripyuk.com
+                        </a>
 
                     </div>
 
@@ -130,7 +129,7 @@
 </template>
 
 <script>
-export default {
+    export default {
 
-}
+    }
 </script>
