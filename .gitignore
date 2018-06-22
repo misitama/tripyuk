@@ -9,3 +9,5 @@ yarn-error.log
 .env
 .env.example
 .env.example
+public/backoffice/js/app.js
+public/frontoffice/js/app.js
