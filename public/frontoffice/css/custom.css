@@ -1,3 +1,8 @@
+.bg-light-dark{
+    background-color: #cccccc !important;
+    color: #464646 !important;
+}
+
 .dashboard-menu-item{
     display: block;
     padding: 10px 0 10px 10px;
