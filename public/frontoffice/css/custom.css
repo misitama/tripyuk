@@ -1,3 +1,35 @@
+.text-post-promo{
+    margin-top: 20px;
+}
+
+.img-post-promo{
+    width: 100%;
+    height: 400px;
+    background-position: center center !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+}
+
+.fixed-chat{
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    color: #fff;
+    text-align: center;
+}
+
+.icon-chat{
+    width: 75px;
+}
+
+.icon-chat-child{
+    width: 50px;
+}
+
+.chat-dropdown{
+    width: 250px !important;
+}
+
 .hover-dropdown{
     position: relative;
 }

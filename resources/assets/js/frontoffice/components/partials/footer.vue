@@ -87,7 +87,7 @@
                                 <h5 class="">Tripyuk.com</h5>
                                 <ul class="list-group  pt-4 m-0">
                                     <li class="list-group-item bg-white border-0 p-0 m-0">
-                                        <router-link class="d-block pt-1 pb-1" :to="{ name:'howtobook' }">Partner Tripyuk</router-link>
+                                        <router-link class="d-block pt-1 pb-1" :to="{ name:'partner' }">Partner Tripyuk</router-link>
                                     </li>
                                     <li class="list-group-item bg-white border-0 p-0 m-0">
                                         <router-link class="d-block pt-1 pb-1" :to="{ name:'syaratketentuan' }">Syarat dan Ketentuan</router-link>
@@ -96,32 +96,54 @@
                                         <router-link class="d-block pt-1 pb-1" :to="{ name:'kebijakanprivasi' }">Kebijakan Privasi</router-link>
                                     </li>
                                     <li class="list-group-item bg-white border-0 p-0 m-0">
-                                        <router-link class="d-block pt-1 pb-1" :to="{ name:'howtobook' }">Karir</router-link>
+                                        <router-link class="d-block pt-1 pb-1" :to="{ name:'karir' }">Karir</router-link>
                                     </li>
                                     <li class="list-group-item bg-white border-0 p-0 m-0">
-                                        <router-link class="d-block pt-1 pb-1" :to="{ name:'howtobook' }">Blog</router-link>
+                                        <router-link class="d-block pt-1 pb-1" :to="{ name:'blog' }">Blog</router-link>
                                     </li>
                                 </ul>
                             </div>
                             <div class="col-lg-4">
                                 <h5 class="">Produk</h5>
                                 <ul class="list-group  pt-4 m-0">
-                                    <li class="list-group-item bg-white border-0 p-0 m-0"><a class=" d-block pt-1 pb-1" href="#">Tiket</a> </li>
-                                    <li class="list-group-item bg-white border-0 p-0 m-0"><a class=" d-block pt-1 pb-1" href="#">Umroh Haji</a> </li>
-                                    <li class="list-group-item bg-white border-0 p-0 m-0"><a class=" d-block pt-1 pb-1" href="#">Tour</a> </li>
-                                    <li class="list-group-item bg-white border-0 p-0 m-0"><a class=" d-block pt-1 pb-1" href="#">Hotel</a> </li>
-                                    <li class="list-group-item bg-white border-0 p-0 m-0"><a class=" d-block pt-1 pb-1" href="#">Transportasi</a> </li>
-                                    <li class="list-group-item bg-white border-0 p-0 m-0"><a class=" d-block pt-1 pb-1" href="#">Kuliner</a> </li>
-                                    <li class="list-group-item bg-white border-0 p-0 m-0"><a class=" d-block pt-1 pb-1" href="#">E-Commerce</a> </li>
+                                    <li class="list-group-item bg-white border-0 p-0 m-0">
+                                        <router-link class="d-block pt-1 pb-1" :to="{ name:'home' }">Tiket</router-link>
+                                    </li>
+                                    <li class="list-group-item bg-white border-0 p-0 m-0">
+                                        <router-link class="d-block pt-1 pb-1" :to="{ name:'umroh' }">Umroh Haji</router-link>
+                                    </li>
+                                    <li class="list-group-item bg-white border-0 p-0 m-0">
+                                        <router-link class="d-block pt-1 pb-1" :to="{ name:'tour' }">Tour</router-link>
+                                    </li>
+                                    <li class="list-group-item bg-white border-0 p-0 m-0">
+                                        <router-link class="d-block pt-1 pb-1" :to="{ name:'hotel' }">Hotel</router-link>
+                                    </li>
+                                    <li class="list-group-item bg-white border-0 p-0 m-0">
+                                        <router-link class="d-block pt-1 pb-1" :to="{ name:'penjemputan' }">Transportasi</router-link>
+                                    </li>
+                                    <li class="list-group-item bg-white border-0 p-0 m-0">
+                                        <router-link class="d-block pt-1 pb-1" :to="{ name:'kuliner' }">Kuliner</router-link>
+                                    </li>
+                                    <li class="list-group-item bg-white border-0 p-0 m-0">
+                                        <router-link class="d-block pt-1 pb-1" :to="{ name:'toko' }">E-Commerce</router-link>
+                                    </li>
                                 </ul>
                             </div>
                             <div class="col-lg-4">
                                 <h5 class="">Contact Us</h5>
                                 <ul class="list-group  pt-4 m-0">
-                                    <li class="list-group-item bg-white border-0 p-0 m-0"><a class=" d-block pt-1 pb-1" href="#">Cara Pemesanan</a> </li>
-                                    <li class="list-group-item bg-white border-0 p-0 m-0"><a class=" d-block pt-1 pb-1" href="#">FAQ</a> </li>
-                                    <li class="list-group-item bg-white border-0 p-0 m-0"><a class=" d-block pt-1 pb-1" href="#">Customer Service</a> </li>
-                                    <li class="list-group-item bg-white border-0 p-0 m-0"><a class=" d-block pt-1 pb-1" href="#">Our Office</a> </li>
+                                    <li class="list-group-item bg-white border-0 p-0 m-0">
+                                        <router-link class="d-block pt-1 pb-1" :to="{ name:'howtobook' }">Cara Pemesanan</router-link>
+                                    </li>
+                                    <li class="list-group-item bg-white border-0 p-0 m-0">
+                                        <router-link class="d-block pt-1 pb-1" :to="{ name:'faq' }">FAQ</router-link>
+                                    </li>
+                                    <li class="list-group-item bg-white border-0 p-0 m-0">
+                                        <router-link class="d-block pt-1 pb-1" :to="{ name:'customerservice' }">Customer Service</router-link>
+                                    </li>
+                                    <li class="list-group-item bg-white border-0 p-0 m-0">
+                                        <a class="d-block pt-1 pb-1" href="#">Our Office</a>
+                                    </li>
                                 </ul>
                             </div>
                         </div>

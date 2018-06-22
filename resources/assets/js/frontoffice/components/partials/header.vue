@@ -24,7 +24,13 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ml-auto fa-ul">
                             <li class="nav-item">
-                                <a class="nav-link" href="#"><span class="icon-menu"><img src="frontoffice/icon/promo.png"/></span> Blog <span class="sr-only">(current)</span></a>
+                                <router-link class="nav-link" :to="{ name: 'blog' }">
+                                    <span class="icon-menu">
+                                        <img src="frontoffice/icon/promo.png"/>
+                                    </span>
+                                    Blog
+                                    <span class="sr-only">(current)</span>
+                                </router-link>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#"><span class="icon-menu"><img src="frontoffice/icon/cek-pesanan.png"/></span> Cek Pesanan <span class="sr-only">(current)</span></a>
@@ -183,7 +189,7 @@
                             </router-link>
                             <router-link class="dropdown-item second-menu-item" :to="{name:'tiketkapal'}">
                                 <img class="second-icon-menu" src="frontoffice/icon/kapal.png">
-                                Tiket Bus
+                                Tiket Kapal
                             </router-link>
                         </div>
                     </div>
@@ -195,21 +201,41 @@
                             Umroh & Haji
                         </a>
                         <div class="hover-dropdown-menu dropdown-w-300" aria-labelledby="tiketMenuDropdown">
-                            <router-link class="dropdown-item second-menu-item" :to="{name:'tiketpesawat'}">
+                            <router-link class="dropdown-item second-menu-item" :to="{name:'haji'}">
                                 <img class="second-icon-menu" src="frontoffice/icon/icon/tiket-pesawat.png">
                                 Haji
                             </router-link>
-                            <a class="dropdown-item second-menu-item" href="#">
+                            <router-link class="dropdown-item second-menu-item" :to="{name:'umroh'}">
                                 <img class="second-icon-menu" src="frontoffice/icon/icon/kereta-text.png">
                                 Umroh
-                            </a>
+                            </router-link>
+                        </div>
+                    </div>
+                    <div class="col hover-dropdown">
+                        <a class="second-menu dropdown-toggle pt-2 pb-2" href="#" id="umrohHajiMenuDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="icon-menu-secondary">
+                                <img src="frontoffice/icon/icon/tour-text.png" alt="">
+                            </span>
+                            Tour
+                        </a>
+                        <div class="hover-dropdown-menu dropdown-w-300" aria-labelledby="tiketMenuDropdown">
+                            <router-link class="dropdown-item second-menu-item" :to="{name:'tourdomestik'}">
+                                <img class="second-icon-menu" src="frontoffice/icon/icon/tiket-pesawat.png">
+                                Domestik
+                            </router-link>
+                            <router-link class="dropdown-item second-menu-item" :to="{name:'tourinternational'}">
+                                <img class="second-icon-menu" src="frontoffice/icon/icon/kereta-text.png">
+                                International
+                            </router-link>
                         </div>
                     </div>
                     <div class="col dropdown">
-                        <a class="second-menu pt-2 pb-2" href="#"><span class="icon-menu-secondary"><img src="frontoffice/icon/icon/tour-text.png" alt=""></span> Tour</a>
-                    </div>
-                    <div class="col dropdown">
-                        <a class="second-menu pt-2 pb-2" href="#"><span class="icon-menu-secondary"><img src="frontoffice/icon/icon/hotel-text.png" alt=""></span> Hotel </a>
+                        <router-link class="second-menu pt-2 pb-2" :to="{ name: 'hotel' }">
+                            <span class="icon-menu-secondary">
+                                <img src="frontoffice/icon/icon/hotel-text.png" alt="">
+                            </span>
+                            Hotel
+                        </router-link>
                     </div>
                     <div class="col hover-dropdown">
                         <a class="second-menu dropdown-toggle pt-2 pb-2" href="#" id="transportMenuDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -217,21 +243,31 @@
                             Transport
                         </a>
                         <div class="hover-dropdown-menu dropdown-w-300" aria-labelledby="transportMenuDropdown">
-                            <a class="dropdown-item second-menu-item" href="#">
-                                <img class="icon-menu" src="frontoffice/icon/shuttle.png">
-                                Shuttle
-                            </a>
-                            <a class="dropdown-item second-menu-item" href="#">
-                                <img class="icon-menu" src="frontoffice/icon/icon/rent-text.png">
-                                Rent
-                            </a>
+                            <router-link class="dropdown-item second-menu-item" :to="{name:'penjemputan'}">
+                                <img class="second-icon-menu" src="frontoffice/icon/shuttle.png">
+                                Penjemputan
+                            </router-link>
+                            <router-link class="dropdown-item second-menu-item" :to="{name:'rentalmobil'}">
+                                <img class="second-icon-menu" src="frontoffice/icon/icon/rent-text.png">
+                                Rental Mobil
+                            </router-link>
                         </div>
                     </div>
                     <div class="col dropdown">
-                        <a class="second-menu pt-2 pb-2" href="#"><span class="icon-menu-secondary"><img src="frontoffice/icon/icon/kuliner-text.png" alt=""></span> Kuliner</a>
+                        <router-link class="second-menu pt-2 pb-2" :to="{ name: 'kuliner' }">
+                            <span class="icon-menu-secondary">
+                                <img src="frontoffice/icon/icon/kuliner-text.png" alt="">
+                            </span>
+                            Kuliner
+                        </router-link>
                     </div>
                     <div class="col dropdown">
-                        <a class="second-menu pt-2 pb-2" href="#"><span class="icon-menu-secondary"><img src="frontoffice/icon/ecommerce.png" alt=""></span> E-Commerce</a>
+                        <router-link class="second-menu pt-2 pb-2" :to="{ name: 'toko' }">
+                            <span class="icon-menu-secondary">
+                                <img src="frontoffice/icon/ecommerce.png" alt="">
+                            </span>
+                            E-Commerce
+                        </router-link>
                     </div>
                 </div>
             </div>
