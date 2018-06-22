@@ -20,6 +20,8 @@ class RepositoryAppProvider extends ServiceProvider
         $this->app->bind('App\\Repositories\\Contracts\\IDistrictRepository', 'App\\Repositories\\Actions\DistrictRepository');
         $this->app->bind('App\\Repositories\\Contracts\\IMasterBedTypeRepository', 'App\\Repositories\\Actions\MasterBedTypeRepository');
         $this->app->bind('App\\Repositories\\Contracts\\IRestaurantTypeRepository', 'App\\Repositories\\Actions\RestaurantTypeRepository');
+        $this->app->bind('App\\Repositories\\Contracts\\ITourCategoryRepository', 'App\\Repositories\\Actions\TourCategoryRepository');
+        $this->app->bind('App\\Repositories\\Contracts\\ITourDestinationRepository', 'App\\Repositories\\Actions\TourDestinationRepository');
     }
 
     /**

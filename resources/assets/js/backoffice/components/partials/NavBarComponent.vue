@@ -23,6 +23,14 @@
                         <li><a href="#" @click.prevent="navClick('/bed-type')">Master Bed Type</a></li>
                     </ul>
                 </li>
+                <li class="dropdown" id="masterData">
+                    <a href="#" class="dropdown-toggle" data-toggle='dropdown'><i class="fa fa-tripadvisor"></i> <span>Tours<i class="fa fa-angle-down"></i></span></a>
+                    <ul class="dropdown-menu">
+                        <li><router-link :to="{name:'masterTourCategory'}">Tour Category</router-link></li>
+                        <li><a href="#" @click.prevent="navClick('/facilities')">Master Facilities</a></li>
+                        <li><a href="#" @click.prevent="navClick('/bed-type')">Master Bed Type</a></li>
+                    </ul>
+                </li>
                 <li><a href="#"><i class="fa fa-briefcase"></i> <span>Holiday</span></a></li>
                 <li><router-link :to="{name:'airlinesBook'}"><i class="fa fa-plane"></i> <span>Air Lines</span></router-link></li>
                 <li><a href="#"><i class="fa fa-train"></i> <span>Train</span></a></li>
