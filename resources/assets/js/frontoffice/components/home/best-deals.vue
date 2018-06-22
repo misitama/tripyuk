@@ -17,7 +17,7 @@
 
                     <div class="col-lg-4 pb-3 pr-2 pl-2">
 
-                        <a href="#">
+                        <router-link :to="{ name: 'detailpromo' }">
                             <div class="link-image" style="background-image:url(frontoffice/img/promo/promo-1.jpg)">
                                 <div class="image-caption">
                                     <div class="text">
@@ -28,94 +28,95 @@
                                     </div>
                                 </div>
                             </div>
-                        </a>
+                        </router-link>
 
                     </div>
                     <div class="col-lg-4 pb-3 pr-2 pl-2">
 
-                        <a href="#">
-                            <div class="link-image" style="background-image:url(frontoffice/img/promo/promo-7.jpg)">
+                        <router-link :to="{ name: 'detailpromo' }">
+                            <div class="link-image" style="background-image:url(frontoffice/img/promo/promo-1.jpg)">
                                 <div class="image-caption">
                                     <div class="text">
                                         <div class="inner-text text-center">
-                                            <h5 class="item">Promo Tiket Kereta Api</h5>
-                                            <small class="item">Dapatkan tiket Kereta Api dengan harga miring</small>
+                                            <h5 class="item">Promo Tiket Pesawat</h5>
+                                            <small class="item">Dapatkan tiket pesawat dengan harga miring</small>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </a>
+                        </router-link>
 
                     </div>
                     <div class="col-lg-4 pb-3 pr-2 pl-2">
 
-                        <a href="#">
-                            <div class="link-image" style="background-image:url(frontoffice/img/promo/promo-3.jpg)">
+                        <router-link :to="{ name: 'detailpromo' }">
+                            <div class="link-image" style="background-image:url(frontoffice/img/promo/promo-1.jpg)">
                                 <div class="image-caption">
                                     <div class="text">
                                         <div class="inner-text text-center">
-                                            <h5 class="item">Promo Tiket Bus</h5>
-                                            <small class="item">Dapatkan tiket Bus dengan harga miring</small>
+                                            <h5 class="item">Promo Tiket Pesawat</h5>
+                                            <small class="item">Dapatkan tiket pesawat dengan harga miring</small>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </a>
+                        </router-link>
 
                     </div>
                     <div class="col-lg-4 pb-3 pr-2 pl-2">
 
-                        <a href="#">
-                            <div class="link-image" style="background-image:url(frontoffice/img/promo/promo-4.jpg)">
+                        <router-link :to="{ name: 'detailpromo' }">
+                            <div class="link-image" style="background-image:url(frontoffice/img/promo/promo-1.jpg)">
                                 <div class="image-caption">
                                     <div class="text">
                                         <div class="inner-text text-center">
-                                            <h5 class="item">Promo Tiket Kapal</h5>
-                                            <small class="item">Dapatkan tiket Kapal dengan harga miring</small>
+                                            <h5 class="item">Promo Tiket Pesawat</h5>
+                                            <small class="item">Dapatkan tiket pesawat dengan harga miring</small>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </a>
+                        </router-link>
 
                     </div>
                     <div class="col-lg-4 pb-3 pr-2 pl-2">
 
-                        <a href="#">
-                            <div class="link-image" style="background-image:url(frontoffice/img/promo/promo-5.jpg)">
+                        <router-link :to="{ name: 'detailpromo' }">
+                            <div class="link-image" style="background-image:url(frontoffice/img/promo/promo-1.jpg)">
                                 <div class="image-caption">
                                     <div class="text">
                                         <div class="inner-text text-center">
-                                            <h5 class="item">Promo Kamar Hotel</h5>
-                                            <small class="item">Dapatkan kamar hotel dengan harga miring</small>
+                                            <h5 class="item">Promo Tiket Pesawat</h5>
+                                            <small class="item">Dapatkan tiket pesawat dengan harga miring</small>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </a>
+                        </router-link>
 
                     </div>
                     <div class="col-lg-4 pb-3 pr-2 pl-2">
 
-                        <a href="#">
-                            <div class="link-image" style="background-image:url(frontoffice/img/promo/promo-6.jpg)">
+                        <router-link :to="{ name: 'detailpromo' }">
+                            <div class="link-image" style="background-image:url(frontoffice/img/promo/promo-1.jpg)">
                                 <div class="image-caption">
                                     <div class="text">
                                         <div class="inner-text text-center">
-                                            <h5 class="item">Promo Rental Mobil</h5>
-                                            <small class="item">Dapatkan Rental Mobil dengan harga miring</small>
+                                            <h5 class="item">Promo Tiket Pesawat</h5>
+                                            <small class="item">Dapatkan tiket pesawat dengan harga miring</small>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </a>
+                        </router-link>
 
                     </div>
+
                     <div class="col-lg-12 pb-3 pr-2 pl-2 text-center">
 
-                        <a href="#" class="btn btn-primary">
+                        <router-link class="btn btn-primary" :to="{ name: 'promo' }">
                             Lihat Semua Promo
-                        </a>
+                        </router-link>
 
                     </div>
 

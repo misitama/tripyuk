@@ -3,6 +3,7 @@
 
         <section>
             <div class="container ptb-75">
+                <!-- filter -->
                 <div class="row pt-2 pb-3 mb-5 bg-light align-items-end">
                     <div class="form-group m-0 col-lg-3 pr-2">
                         <label for="tujuan">Pilih provinsi</label>
@@ -36,12 +37,15 @@
                     </div>
                 </div>
 
+                <!-- content -->
                 <div class="row">
                     <div class="col-lg-3">
                         <div class="card">
                             <img class="card-img-top" src="frontoffice/img/slider1.jpg" alt="Blog image cap">
                             <div class="card-body">
-                                <a href="#"><h5 class="card-title">Paket Tour</h5></a>
+                                <router-link :to="{ name: 'detailtourdomestik' }">
+                                    <h5 class="card-title">Paket Tour</h5>
+                                </router-link>
 
                                 <p class="card-text">Some quick example text to build on the card title</p>
                             </div>
@@ -51,7 +55,9 @@
                         <div class="card">
                             <img class="card-img-top" src="frontoffice/img/slider1.jpg" alt="Blog image cap">
                             <div class="card-body">
-                                <a href="#"><h5 class="card-title">Paket Tour</h5></a>
+                                <router-link :to="{ name: 'detailtourdomestik' }">
+                                    <h5 class="card-title">Paket Tour</h5>
+                                </router-link>
 
                                 <p class="card-text">Some quick example text to build on the card title</p>
                             </div>
@@ -61,7 +67,9 @@
                         <div class="card">
                             <img class="card-img-top" src="frontoffice/img/slider1.jpg" alt="Blog image cap">
                             <div class="card-body">
-                                <a href="#"><h5 class="card-title">Paket Tour</h5></a>
+                                <router-link :to="{ name: 'detailtourdomestik' }">
+                                    <h5 class="card-title">Paket Tour</h5>
+                                </router-link>
 
                                 <p class="card-text">Some quick example text to build on the card title</p>
                             </div>
@@ -71,7 +79,9 @@
                         <div class="card">
                             <img class="card-img-top" src="frontoffice/img/slider1.jpg" alt="Blog image cap">
                             <div class="card-body">
-                                <a href="#"><h5 class="card-title">Paket Tour</h5></a>
+                                <router-link :to="{ name: 'detailtourdomestik' }">
+                                    <h5 class="card-title">Paket Tour</h5>
+                                </router-link>
 
                                 <p class="card-text">Some quick example text to build on the card title</p>
                             </div>

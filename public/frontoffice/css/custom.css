@@ -1,3 +1,51 @@
+.dashboard-menu-item{
+    display: block;
+    padding: 10px 0 10px 10px;
+    background-color: #ebebeb;
+}
+
+.dashboard-menu-item:hover{
+    color: #fff;
+    background-color: #7cb342;
+}
+
+.dashboard-menu-item:active .router-link-exact-active{
+    color: #fff;
+    background-color: #7cb342;
+}
+
+.image-ava{
+    width: 75px;
+    height: 75px;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    border-radius: 50%;
+}
+
+.header-aliases{
+    height: 107px;
+}
+
+.sticky-bar{
+    top : 0;
+    width: 100%;
+    z-index: 1000 !important;
+    position: fixed;
+    border-bottom: 1px solid #d0d0d0;
+}
+
+.sticky-sidebar{
+    top : 127px;
+    z-index: 999 !important;
+    position: sticky;
+}
+
+.list-number{
+    padding: 5px;
+    border: 3px solid gray;
+}
+
 .text-post-promo{
     margin-top: 20px;
 }

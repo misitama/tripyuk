@@ -1,4 +1,10 @@
+// pesanan komponen
+import CekPesanan from './components/pesanan/pesanan-index.vue';
+
 import Home from './components/home/index.vue';
+
+//dashboard komponen
+import Dashboard from './components/dashboard/dashboard-index.vue';
 
 // pesawat komponen
 import Pesawat from './components/pesawat/pesawat-index.vue';
@@ -21,13 +27,16 @@ import Kapal from './components/kapal/kapal-index.vue';
 
 // umroh komponen
 import Umroh from './components/umroh/umroh-index.vue';
+import DetailUmroh from './components/umroh/umroh-detail.vue';
 
 // haji komponen
 import Haji from './components/haji/haji-index.vue';
+import DetailHaji from './components/haji/haji-detail.vue';
 
 // tour komponen
 import Tour from './components/tour/tour-index.vue';
 import TourDomestik from './components/tour/tour-domestik.vue';
+import DetailTourDomestik from './components/tour/tour-domestik/tour-domestik-detail.vue';
 import TourInternational from './components/tour/tour-international.vue';
 
 // hotel komponen
@@ -62,6 +71,13 @@ export default [
         path: '/',
         name: 'home',
         component: Home
+    },
+
+    // dashboard route
+    {
+        path : '/dashboard',
+        name : 'dashboard',
+        component : Dashboard
     },
 
     // pesawat route
@@ -123,12 +139,22 @@ export default [
         name : 'umroh',
         component : Umroh
     },
+    {
+        path : '/detail-umroh',
+        name : 'detailumroh',
+        component : DetailUmroh
+    },
 
     // haji route
     {
         path : '/haji',
         name : 'haji',
         component : Haji
+    },
+    {
+        path : '/detail-haji',
+        name : 'detailhaji',
+        component : DetailHaji
     },
 
     // tour rote
@@ -141,6 +167,11 @@ export default [
         path : '/tour-domestik',
         name : 'tourdomestik',
         component : TourDomestik
+    },
+    {
+        path : '/detail-tour-domestik',
+        name : 'detailtourdomestik',
+        component : DetailTourDomestik
     },
     {
         path : '/tour-international',
@@ -193,6 +224,11 @@ export default [
         path: '/sukses',
         name: 'sukses',
         component: Sukses
+    },
+    {
+        path : '/cek-pesanan',
+        name : 'cekpesanan',
+        component : CekPesanan
     },
 
     // route
