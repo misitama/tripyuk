@@ -181,6 +181,9 @@ return [
         Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
         Ixudra\Curl\CurlServiceProvider::class,
         Barryvdh\Cors\ServiceProvider::class,
+        Unisharp\Laravelfilemanager\LaravelFilemanagerServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
+        Unisharp\Ckeditor\ServiceProvider::class,
 
     ],
 
@@ -234,6 +237,7 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,
         'Curl'          => Ixudra\Curl\Facades\Curl::class,
+        'Image' => Intervention\Image\Facades\Image::class,
     ],
 
 ];

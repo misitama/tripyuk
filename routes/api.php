@@ -46,6 +46,20 @@ Route::group(['middleware' => 'jwt.auth'], function () {
     Route::post('/restaurant-type/update', 'RestaurantTypeController@update');
     Route::post('/restaurant-type/delete/{id}', 'RestaurantTypeController@delete');
 
+
+    /*tour category*/
+
+    Route::post('/tour-category/pagination','TourCategoryController@pagination');
+    Route::post('/tour-category/create','TourCategoryController@create');
+    Route::get('/tour-category/read/{id}','TourCategoryController@read');
+    Route::get('/tour-category/all','TourCategoryController@all');
+    Route::get('/tour-category/select2-show','TourCategoryController@select2Show');
+    Route::post('/tour-category/update','TourCategoryController@update');
+    Route::post('/tour-category/delete/{id}','TourCategoryController@delete');
+
+    /*tour destination */
+
+
     Route::post('/get-air-lines-list', 'ApiDarmawisataController@getAirLineList');
     Route::post('/get-nationality-list', 'ApiDarmawisataController@getNationalityList');
     Route::post('/get-air-lines-routes', 'ApiDarmawisataController@getAirLineRoutes');

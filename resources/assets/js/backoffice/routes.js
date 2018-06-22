@@ -10,7 +10,8 @@ import IndexAirlineBook from './components/airlines/index.vue';
 import PageHeadingAirlineBook from './components/airlines/pageheading.vue';
 import MasterRestaurantType from './components/restauranttype/index.vue';
 import PartnerRegistration from './components/auth/registration.vue';
-
+import MasterTourCategory from './components/tourcategory/index.vue';
+import MasterTourDestination from './components/tourdestination/index.vue';
 
 export default [
     {
@@ -54,6 +55,22 @@ export default [
         meta:{
             auth:true
         }
+    },
+    {
+      path:'/master-tour-category',
+      name:'masterTourCategory',
+      component:MasterTourCategory,
+      meta:{
+          auth:true
+      }
+    },
+    {
+      path:'/master-tour-destination',
+      name:'masterTourDestination',
+      component:MasterTourDestination,
+      meta:{
+          auth:true
+      }
     },
     {
         path:'/bed-type',

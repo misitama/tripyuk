@@ -312,9 +312,6 @@
                 updatedAt: '',
                 createdBy: '',
                 lastModifiedBy: '',
-                state: 'add',
-                modalTitle: '',
-                disabledElement: false,
                 errorMessage: {},
                 optRoles: [],
                 optProvince: [],
@@ -340,11 +337,6 @@
             });
         },
         beforeMount: function () {
-            if (this.$auth.check()) {
-                $('body').addClass('horizontal-nav').removeClass('focusedform');
-            } else {
-                $('body').addClass('focusedform').removeClass('horizontal-nav');
-            }
             $('#provinceId').select2();
         },
         watch: {
@@ -446,36 +438,27 @@
                 });
             },
             readData: function (id) {
-                var app = this;
-                runWaitMe('body', 'progressBar', 'Fetch data, please wait...');
-                app.$http.get('/user/read/' + id)
-                    .then((response) => {
-                        app.userId = response.data.result.userId;
-                        app.fullName = response.data.result.fullName;
-                        app.sex = response.data.result.sex;
-                        app.email = response.data.result.email;
-                        app.phone = response.data.result.phone;
-                        app.mobilePhone = response.data.result.mobilePhone;
-                        $('#provinceId').val(response.data.result.provinceId);
-                        app.provinceId = response.data.result.provinceId;
-                        app.regencyId = response.data.result.regencyId;
-                        app.districtId = response.data.result.districtId;
-                        app.roleId = response.data.result.roleId;
-                        app.isActive = response.data.result.isActive;
-                        app.isBlocked = response.data.result.isBlocked;
-                        app.address = response.data.result.address;
-                        app.createdAt = response.data.result.createdAt;
-                        app.updatedAt = response.data.result.updatedAt;
-                        app.createdBy = response.data.result.createdBy;
-                        app.lastModifiedBy = response.data.result.lastModifiedBy;
-
-                        $('body').waitMe('hide');
-                    })
-                    .catch((error) => {
-                        app.errorMessage = error.errorMessage;
-                        for (var i = 0; i < app.errorMessage.length; i++) {
-                            notificationMessage(app.errorMessage[i], 'error');
-                        }
+                let app = this;
+                app.$readData(app,'/user/read/'+id)
+                    .then((response)=>{
+                        app.userId = response.userId;
+                        app.fullName = response.fullName;
+                        app.sex = response.sex;
+                        app.email = response.email;
+                        app.phone = response.phone;
+                        app.mobilePhone = response.mobilePhone;
+                        $('#provinceId').val(response.provinceId);
+                        app.provinceId = response.provinceId;
+                        app.regencyId = response.regencyId;
+                        app.districtId = response.districtId;
+                        app.roleId = response.roleId;
+                        app.isActive = response.isActive;
+                        app.isBlocked = response.isBlocked;
+                        app.address = response.address;
+                        app.createdAt = response.createdAt;
+                        app.updatedAt = response.updatedAt;
+                        app.createdBy = response.createdBy;
+                        app.lastModifiedBy = response.lastModifiedBy;
                     });
             },
             showModalForm: function (state) {
