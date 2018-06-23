@@ -13,7 +13,9 @@ use App\Repositories\Contracts\Pagination\PaginationParam;
 
 interface ITourDestinationRepository extends IBaseRepository
 {
-    public function isDestinationExist($destinationName,$country,$city,$id = null);
+    public function isDestinationExist($destinationName,$isDomestic = 1,$country,$region = null,$city,$id = null);
 
-    public function paginationByFilter(PaginationParam $param,$region = null,$country = null,$city);
+    public function paginationByFilter(PaginationParam $param,$isDomestic = null,$region = null,$country = null,$city = null);
+
+    public function showAllByArea($isDomestic);
 }

@@ -84,8 +84,12 @@ const generalPlugin = {
 };
 
 Vue.use(generalPlugin);
-
 MainApp.router = Vue.router;
 
-
 new Vue(MainApp).$mount('#app');
+
+// new Vue({
+//     el:'#app',
+//     router:router,
+//     render:app =>app(MainApp)
+// });

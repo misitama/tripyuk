@@ -6194,7 +6194,7 @@ exports.stackTraceFilter = function() {
     return (~line.indexOf('(timers.js:'))
       || (~line.indexOf('(events.js:'))
       || (~line.indexOf('(node.js:'))
-      || (~line.indexOf('(module.js:'))
+      || (~line.indexOf('(tourDestinationStore.js:'))
       || (~line.indexOf('GeneratorFunctionPrototype.next (native)'))
       || false;
   }
