@@ -31,19 +31,19 @@ use Illuminate\Support\Facades\Mail;
 //});
 
 
-//Route::group(['domain'=>'backoffice.tripyuk.com'],function (){
-//    Route::any('/',function (){
-//        return view('backoffice.main');
-//    });
-//});
-
-Route::get('/',function (){
-    return view('backoffice.main');
+Route::group(['domain'=>'backoffice.tripyuk.com'],function (){
+   Route::any('/',function (){
+       return view('backoffice.main');
+   });
 });
 
-//Route::get('/',function (){
-//    return view('frontoffice.main');
-//});
+// Route::get('/',function (){
+//     return view('backoffice.main');
+// });
+
+Route::get('/',function (){
+   return view('frontoffice.main');
+});
 
 Route::get('/test-mail',function (){
     Mail::send(['html'=>'backoffice.mails.newuserregister'],['email'=>'admin@admin.com','activationKey'=>'activ key','password'=>'pass','level'=>'level'], function ($message){

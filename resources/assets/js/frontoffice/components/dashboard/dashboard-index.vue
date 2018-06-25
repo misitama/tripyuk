@@ -5,41 +5,43 @@
             <div class="container ptb-75">
                 <div class="row">
                     <div class="col-lg-3">
-                        <div class="row align-items-center">
-                            <div class="col-lg-4">
-                                <div class="image-ava" style="background:url(frontoffice/img/promo/promo-1.jpg)"></div>
+                        <div class="sticky-sidebar">
+                            <div class="row align-items-center">
+                                <div class="col-lg-4">
+                                    <div class="image-ava" style="background:url(frontoffice/img/promo/promo-1.jpg)"></div>
+                                </div>
+                                <div class="col-lg-8">
+                                    <h6>Your Name</h6>
+                                    <small class="font-italic">Customer</small>
+                                </div>
                             </div>
-                            <div class="col-lg-8">
-                                <h6>Your Name</h6>
-                                <small class="font-italic">Customer</small>
-                            </div>
-                        </div>
-                        <div class="row mt-3">
-                            <div class="col-lg-12">
-                                <div class="nav flex-column nav-pills" id="dashboardMenuTab" role="tablist" aria-orientation="vertical">
-                                    <a class="nav-link tab-link mt-2 mb-2 active" id="dashboard-tab" data-toggle="pill" href="#dashboard" role="tab" aria-controls="v-pills-dashboard" aria-selected="true">
-                                        Dashboard
-                                    </a>
+                            <div class="row mt-3">
+                                <div class="col-lg-12">
+                                    <div class="nav flex-column nav-pills" id="dashboardMenuTab" role="tablist" aria-orientation="vertical">
+                                        <a class="nav-link tab-link mt-2 mb-2 active" id="dashboard-tab" data-toggle="pill" href="#dashboard" role="tab" aria-controls="v-pills-dashboard" aria-selected="true">
+                                            Dashboard
+                                        </a>
 
-                                    <a class="nav-link tab-link mt-2 mb-2" id="pesanan-tab" data-toggle="pill" href="#pesanan" role="tab" aria-controls="v-pills-pesanan" aria-selected="false">
-                                        Pesanan Anda
-                                    </a>
+                                        <a class="nav-link tab-link mt-2 mb-2" id="pesanan-tab" data-toggle="pill" href="#pesanan" role="tab" aria-controls="v-pills-pesanan" aria-selected="false">
+                                            Pesanan Saya
+                                        </a>
 
-                                    <a class="nav-link tab-link mt-2 mb-2" id="kredit-tab" data-toggle="pill" href="#kredit" role="tab" aria-controls="v-pills-kredit" aria-selected="false">
-                                        Kredit Saya
-                                    </a>
+                                        <a class="nav-link tab-link mt-2 mb-2" id="kredit-tab" data-toggle="pill" href="#kredit" role="tab" aria-controls="v-pills-kredit" aria-selected="false">
+                                            Kredit Saya
+                                        </a>
 
-                                    <a class="nav-link tab-link mt-2 mb-2" id="newsletter-tab" data-toggle="pill" href="#newsletter" role="tab" aria-controls="v-pills-newsletter" aria-selected="false">
-                                        Pengaturan Berlangganan
-                                    </a>
+                                        <a class="nav-link tab-link mt-2 mb-2" id="newsletter-tab" data-toggle="pill" href="#newsletter" role="tab" aria-controls="v-pills-newsletter" aria-selected="false">
+                                            Pengaturan Berlangganan
+                                        </a>
 
-                                    <a class="nav-link tab-link mt-2 mb-2" id="akun-tab" data-toggle="pill" href="#akun" role="tab" aria-controls="v-pills-akun" aria-selected="false">
-                                        Akun Saya
-                                    </a>
+                                        <a class="nav-link tab-link mt-2 mb-2" id="akun-tab" data-toggle="pill" href="#akun" role="tab" aria-controls="v-pills-akun" aria-selected="false">
+                                            Akun Saya
+                                        </a>
 
-                                    <router-link class="nav-link bg-light-dark tab-link mt-2 mb-2" :to="{ name: 'home' }">
-                                        Keluar
-                                    </router-link>
+                                        <router-link class="nav-link bg-light-dark tab-link mt-2 mb-2" :to="{ name: 'home' }">
+                                            Keluar
+                                        </router-link>
+                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -42,7 +42,7 @@
 
 .sticky-sidebar{
     top : 127px;
-    z-index: 999 !important;
+    /* z-index: 999 !important; */
     position: sticky;
 }
 
@@ -676,9 +676,21 @@
     filter: brightness(0) invert(1);
 }
 
+#book-tab .nav-item .nav-link img{
+    filter: brightness(0) invert(1);
+}
+
 .second-menu-item:active{
     background-color: #005ec4;
     margin: 0;
+}
+
+.hover-dropdown-menu .router-link-exact-active img{
+    filter: brightness(0) invert(1) !important;
+}
+
+.hover-dropdown-menu .router-link-exact-active{
+    background-color: #005ec4 !important;
 }
 
 .nav-item a{

@@ -1,78 +1,164 @@
 <template>
     <div>
 
-        <div class="row no-gutters">
-            <div class="col-lg-4 pb-3 pl-2 pr-2 ">
-                <a class="image-link" href="index.html">
-                    <div class="image-caption-absolute">
-                        <h5>Bali</h5>
-                        <p>Liburan ke Bali dengan keluarga dan teman dekat anda</p>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb bg-utama">
+                <li class="breadcrumb-item text-white active" aria-current="page">Dashboard</li>
+            </ol>
+        </nav>
 
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="card text-dark bg-light mb-3">
+                    <div class="card-header">
+                        Pesanan Aktif
                     </div>
-                    <div class="overlay-primary" style="background-image:url(frontoffice/img/destinasi-populer/bali.jpg)">
+                    <div class="card-body text-center">
+                        <span class="h1 mr-2 align-middle">1</span><span class="h6 align-middle">Pesanan Aktif</span>
                     </div>
-
-                </a>
+                </div>
             </div>
-            <div class="col-lg-4 pb-3 pl-2 pr-2 ">
-                <a class="image-link" href="index.html">
-                    <div class="image-caption-absolute">
-                        <h5>Bandung</h5>
-                        <p>Liburan ke Bandung dengan keluarga dan teman dekat anda</p>
 
+            <div class="col-lg-4">
+                <div class="card text-dark bg-light mb-3">
+                    <div class="card-header">
+                        Riwayat Pesanan
                     </div>
-                    <div class="overlay-primary" style="background-image:url(frontoffice/img/destinasi-populer/bandung.jpg)">
+                    <div class="card-body text-center">
+                        <span class="h1 mr-2 align-middle">5</span><span class="h6 align-middle">Riwayat Pesanan</span>
                     </div>
-
-                </a>
+                </div>
             </div>
-            <div class="col-lg-4 pb-3 pl-2 pr-2 ">
-                <a class="image-link" href="index.html">
-                    <div class="image-caption-absolute">
-                        <h5>Bogor</h5>
-                        <p>Liburan ke Bogor dengan keluarga dan teman dekat anda</p>
 
+            <div class="col-lg-4">
+                <div class="card text-dark bg-light mb-3">
+                    <div class="card-header">
+                        Kredit
                     </div>
-                    <div class="overlay-primary" style="background-image:url(frontoffice/img/destinasi-populer/bogor.jpg)">
+                    <div class="card-body text-center">
+                        <span class="align-top mr-2">Rp</span><span class="h1 align-middle">100.000</span>
                     </div>
-
-                </a>
+                </div>
             </div>
-            <div class="col-lg-4 pb-3 pl-2 pr-2 ">
-                <a class="image-link" href="index.html">
-                    <div class="image-caption-absolute">
-                        <h5>Jakarta</h5>
-                        <p>Liburan ke Jakarta dengan keluarga dan teman dekat anda</p>
+        </div>
 
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="card bg-light">
+                    <div class="card-header">
+                        Akun Saya
                     </div>
-                    <div class="overlay-primary" style="background-image:url(frontoffice/img/destinasi-populer/jakarta.jpg)">
+                    <div class="card-body">
+                        <div class="row no-gutters mt-2 mb-2">
+                            <div class="col-lg-5">
+                                Title
+                            </div>
+                            <div class="col-lg-1">
+                                :
+                            </div>
+                            <div class="col-lg-6">
+                                Tuan
+                            </div>
+                        </div>
+                        <div class="row no-gutters mt-2 mb-2">
+                            <div class="col-lg-5">
+                                First Name
+                            </div>
+                            <div class="col-lg-1">
+                                :
+                            </div>
+                            <div class="col-lg-6">
+                                Ferry
+                            </div>
+                        </div>
+                        <div class="row no-gutters mt-2 mb-2">
+                            <div class="col-lg-5">
+                                Last Name
+                            </div>
+                            <div class="col-lg-1">
+                                :
+                            </div>
+                            <div class="col-lg-6">
+                                Anggriawan
+                            </div>
+                        </div>
+                        <div class="row no-gutters mt-2 mb-2">
+                            <div class="col-lg-5">
+                                Email
+                            </div>
+                            <div class="col-lg-1">
+                                :
+                            </div>
+                            <div class="col-lg-6">
+                                ferryanggriawan@gmail.com
+                            </div>
+                        </div>
+                        <div class="row no-gutters mt-2 mb-2">
+                            <div class="col-lg-5">
+                                Kewarganegaraan
+                            </div>
+                            <div class="col-lg-1">
+                                :
+                            </div>
+                            <div class="col-lg-6">
+                                Indonesia
+                            </div>
+                        </div>
+                        <div class="row no-gutters mt-2 mb-2">
+                            <div class="col-lg-5">
+                                Provinsi
+                            </div>
+                            <div class="col-lg-1">
+                                :
+                            </div>
+                            <div class="col-lg-6">
+                                Jawa Timur
+                            </div>
+                        </div>
+                        <div class="row no-gutters mt-2 mb-2">
+                            <div class="col-lg-5">
+                                Kabupaten/Kota
+                            </div>
+                            <div class="col-lg-1">
+                                :
+                            </div>
+                            <div class="col-lg-6">
+                                Mojokerto
+                            </div>
+                        </div>
+                        <div class="row no-gutters mt-2 mb-2">
+                            <div class="col-lg-5">
+                                Alamat
+                            </div>
+                            <div class="col-lg-1">
+                                :
+                            </div>
+                            <div class="col-lg-6">
+                                Ds.Tangunan, Kec.Puri, 61363
+                            </div>
+                        </div>
                     </div>
-
-                </a>
+                </div>
             </div>
-            <div class="col-lg-4 pb-3 pl-2 pr-2 ">
-                <a class="image-link" href="index.html">
-                    <div class="image-caption-absolute">
-                        <h5>Jogjakarta</h5>
-                        <p>Liburan ke jogjakarta dengan keluarga dan teman dekat anda</p>
-
+            <div class="col-lg-4">
+                <div class="card bg-light">
+                    <div class="card-header">
+                        Akun Bank
                     </div>
-                    <div class="overlay-primary" style="background-image:url(frontoffice/img/destinasi-populer/jogja.jpg)">
+                    <div class="card-body">
+                        <span class="h6 font-italic">Ferry Anggriawan</span>
+                        <span class="">09898787xxx</span>
                     </div>
-
-                </a>
-            </div>
-            <div class="col-lg-4 pb-3 pl-2 pr-2 ">
-                <a class="image-link" href="index.html">
-                    <div class="image-caption-absolute">
-                        <h5>Malang</h5>
-                        <p>Liburan ke Malang dengan keluarga dan teman dekat anda</p>
-
+                </div>
+                <div class="card bg-light mt-3">
+                    <div class="card-header">
+                        Pengaturan Email
                     </div>
-                    <div class="overlay-primary" style="background-image:url(frontoffice/img/destinasi-populer/malang.jpg)">
+                    <div class="card-body">
+                        <span class="font-italic mt-2 mb-2"><i class="fa fa-user mr-2"></i> Notifikasi Proses Transaksi</span>
+                        <span class="font-italic mt-2 mb-2"><i class="fa fa-user mr-2"></i> Notifikasi Promo</span>
                     </div>
-
-                </a>
+                </div>
             </div>
         </div>
 

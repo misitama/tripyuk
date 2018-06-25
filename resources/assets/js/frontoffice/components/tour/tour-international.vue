@@ -36,14 +36,21 @@
                     </div>
                 </div>
 
+                <!-- content -->
                 <div class="row">
                     <div class="col-lg-3">
                         <div class="card">
                             <img class="card-img-top" src="frontoffice/img/slider1.jpg" alt="Blog image cap">
                             <div class="card-body">
-                                <a href="#"><h5 class="card-title">Paket Tour</h5></a>
-
-                                <p class="card-text">Some quick example text to build on the card title</p>
+                                <router-link :to="{ name: 'detailtourdomestik' }">
+                                    <h5 class="card-title mb-2">Lorem ipsum dolor sit amet, consectetur</h5>
+                                </router-link>
+                                <small class="badge bg-light d-block mb-2">Domestik</small>
+                                <small class="font-italic d-block mb-2"><b>Valid Until :</b> 29 Juni 2018</small>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                </p>
+                                <span class="d-block badge badge-primary mt-2"><h5>Rp 999.000</h5></span>
                             </div>
                         </div>
                     </div>
@@ -51,9 +58,15 @@
                         <div class="card">
                             <img class="card-img-top" src="frontoffice/img/slider1.jpg" alt="Blog image cap">
                             <div class="card-body">
-                                <a href="#"><h5 class="card-title">Paket Tour</h5></a>
-
-                                <p class="card-text">Some quick example text to build on the card title</p>
+                                <router-link :to="{ name: 'detailtourdomestik' }">
+                                    <h5 class="card-title mb-2">Lorem ipsum dolor sit amet, consectetur</h5>
+                                </router-link>
+                                <small class="badge bg-light d-block mb-2">Domestik</small>
+                                <small class="font-italic d-block mb-2"><b>Valid Until :</b> 29 Juni 2018</small>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                </p>
+                                <span class="d-block badge badge-primary mt-2"><h5>Rp 999.000</h5></span>
                             </div>
                         </div>
                     </div>
@@ -61,9 +74,15 @@
                         <div class="card">
                             <img class="card-img-top" src="frontoffice/img/slider1.jpg" alt="Blog image cap">
                             <div class="card-body">
-                                <a href="#"><h5 class="card-title">Paket Tour</h5></a>
-
-                                <p class="card-text">Some quick example text to build on the card title</p>
+                                <router-link :to="{ name: 'detailtourdomestik' }">
+                                    <h5 class="card-title mb-2">Lorem ipsum dolor sit amet, consectetur</h5>
+                                </router-link>
+                                <small class="badge bg-light d-block mb-2">Domestik</small>
+                                <small class="font-italic d-block mb-2"><b>Valid Until :</b> 29 Juni 2018</small>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                </p>
+                                <span class="d-block badge badge-primary mt-2"><h5>Rp 999.000</h5></span>
                             </div>
                         </div>
                     </div>
@@ -71,9 +90,15 @@
                         <div class="card">
                             <img class="card-img-top" src="frontoffice/img/slider1.jpg" alt="Blog image cap">
                             <div class="card-body">
-                                <a href="#"><h5 class="card-title">Paket Tour</h5></a>
-
-                                <p class="card-text">Some quick example text to build on the card title</p>
+                                <router-link :to="{ name: 'detailtourdomestik' }">
+                                    <h5 class="card-title mb-2">Lorem ipsum dolor sit amet, consectetur</h5>
+                                </router-link>
+                                <small class="badge bg-light d-block mb-2">Domestik</small>
+                                <small class="font-italic d-block mb-2"><b>Valid Until :</b> 29 Juni 2018</small>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                </p>
+                                <span class="d-block badge badge-primary mt-2"><h5>Rp 999.000</h5></span>
                             </div>
                         </div>
                     </div>
