@@ -11,3 +11,5 @@ yarn-error.log
 .env.example
 public/backoffice/js/app.js
 public/frontoffice/js/app.js
+public/backoffice/js/app.js
+public/frontoffice/js/app.js

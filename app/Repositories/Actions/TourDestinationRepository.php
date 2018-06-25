@@ -21,6 +21,7 @@ class TourDestinationRepository implements ITourDestinationRepository
     {
         $tourDestination = new TripTourDestinationModel();
         $tourDestination->destination_name = $input['destinationName'];
+        $tourDestination->is_domestic = $input['isDomestic'];
         $tourDestination->region = $input['region'];
         $tourDestination->country = $input['country'];
         $tourDestination->city = $input['city'];
@@ -34,6 +35,7 @@ class TourDestinationRepository implements ITourDestinationRepository
     {
         $tourDestination = TripTourDestinationModel::find($input['id']);
         $tourDestination->destination_name = $input['destinationName'];
+        $tourDestination->is_domestic = $input['isDomestic'];
         $tourDestination->region = $input['region'];
         $tourDestination->country = $input['country'];
         $tourDestination->city = $input['city'];
@@ -53,8 +55,9 @@ class TourDestinationRepository implements ITourDestinationRepository
         $tourDestination = TripTourDestinationModel::find($id);
 
         return [
-            'tourDestinationId' => $tourDestination->id,
+            'id' => $tourDestination->id,
             'destinationName' => $tourDestination->destination_name,
+            'isDomestic' => $tourDestination->is_domestic,
             'region' => $tourDestination->region,
             'country' => $tourDestination->country,
             'city' => $tourDestination->city,
@@ -71,8 +74,9 @@ class TourDestinationRepository implements ITourDestinationRepository
 
         foreach ($tourDestinations as $tourDestination) {
             $data[] = [
-                'tourDestinationId' => $tourDestination->id,
+                'id' => $tourDestination->id,
                 'destinationName' => $tourDestination->destination_name,
+                'isDomestic' => $tourDestination->is_domestic,
                 'region' => $tourDestination->region,
                 'country' => $tourDestination->country,
                 'city' => $tourDestination->city,
@@ -90,7 +94,7 @@ class TourDestinationRepository implements ITourDestinationRepository
 
     }
 
-    public function paginationByFilter(PaginationParam $param, $region = null, $country = null, $city)
+    public function paginationByFilter(PaginationParam $param, $isDomestic = null, $region = null, $country = null, $city = null)
     {
         $result = new PaginationResult();
 
@@ -109,16 +113,28 @@ class TourDestinationRepository implements ITourDestinationRepository
         }
 
         //get total count data
-        if ($region == null) {
+        if ($isDomestic == null) {
             $result->setTotalCount(TripTourDestinationModel::count());
         } else {
-            if ($country == null) {
-                $result->setTotalCount(TripTourDestinationModel::where('region', '=', $region)->count());
-            } else {
-                if ($city == null) {
-                    $result->setTotalCount(TripTourDestinationModel::where('region', '=', $region)->where('country', '=', $region)->count());
+            if($isDomestic == 1){
+                if ($country == null) {
+                    $result->setTotalCount(TripTourDestinationModel::where('is_domestic', '=', $isDomestic)->count());
                 } else {
-                    $result->setTotalCount(TripTourDestinationModel::where('region', '=', $region)->where('country', '=', $region)->where('city', '=', $city)->count());
+                    if ($region == null) {
+                        $result->setTotalCount(TripTourDestinationModel::where('country', '=', $country)->count());
+                    } else {
+                        if ($city == null) {
+                            $result->setTotalCount(TripTourDestinationModel::where('country', '=', $country)->where('region', '=', $region)->count());
+                        } else {
+                            $result->setTotalCount(TripTourDestinationModel::where('country', '=', $country)->where('region', '=', $region)->where('city', '=', $city)->count());
+                        }
+                    }
+                }
+            }else{
+                if ($country == null) {
+                    $result->setTotalCount(TripTourDestinationModel::where('is_domestic', '=', $isDomestic)->count());
+                } else {
+                    $result->setTotalCount(TripTourDestinationModel::where('is_domestic', '=', $isDomestic)->where('country', '=', $country)->count());
                 }
             }
         }
@@ -127,30 +143,72 @@ class TourDestinationRepository implements ITourDestinationRepository
         //get data
 
         if ($param->getKeyword() == '') {
-
-
             if ($skipCount == 0) {
-                if ($region == null) {
-                    $data = TripTourDestinationModel::take($param->getPageSize())
-                        ->orderBy($sortBy, $sortOrder)
-                        ->get();
-                } else {
+                if($isDomestic == null){
                     if ($country == null) {
-                        $data = TripTourDestinationModel::where('region', '=', $region)
-                            ->take($param->getPageSize())
+                        $data = TripTourDestinationModel::take($param->getPageSize())
                             ->orderBy($sortBy, $sortOrder)
                             ->get();
                     } else {
-                        if ($city == null) {
-                            $data = TripTourDestinationModel::where('region', '=', $region)
-                                ->where('country', '=', $country)
+                        if ($region == null) {
+                            $data = TripTourDestinationModel::where('country', '=', $country)
                                 ->take($param->getPageSize())
                                 ->orderBy($sortBy, $sortOrder)
                                 ->get();
                         } else {
-                            $data = TripTourDestinationModel::where('region', '=', $region)
-                                ->where('country', '=', $country)
-                                ->where('city', '=', $city)
+                            if ($city == null) {
+                                $data = TripTourDestinationModel::where('country', '=', $country)
+                                    ->where('region', '=', $region)
+                                    ->take($param->getPageSize())
+                                    ->orderBy($sortBy, $sortOrder)
+                                    ->get();
+                            } else {
+                                $data = TripTourDestinationModel::where('country', '=', $country)
+                                    ->where('region', '=', $region)
+                                    ->where('city', '=', $city)
+                                    ->take($param->getPageSize())
+                                    ->orderBy($sortBy, $sortOrder)
+                                    ->get();
+                            }
+                        }
+                    }
+                }else{
+                    if($isDomestic == 1){
+                        if ($country == null) {
+                            $data = TripTourDestinationModel::where('is_domestic','=',$isDomestic)->take($param->getPageSize())
+                                ->orderBy($sortBy, $sortOrder)
+                                ->get();
+                        } else {
+                            if ($region == null) {
+                                $data = TripTourDestinationModel::where('country', '=', $country)
+                                    ->take($param->getPageSize())
+                                    ->orderBy($sortBy, $sortOrder)
+                                    ->get();
+                            } else {
+                                if ($city == null) {
+                                    $data = TripTourDestinationModel::where('country', '=', $country)
+                                        ->where('region', '=', $region)
+                                        ->take($param->getPageSize())
+                                        ->orderBy($sortBy, $sortOrder)
+                                        ->get();
+                                } else {
+                                    $data = TripTourDestinationModel::where('country', '=', $country)
+                                        ->where('region', '=', $region)
+                                        ->where('city', '=', $city)
+                                        ->take($param->getPageSize())
+                                        ->orderBy($sortBy, $sortOrder)
+                                        ->get();
+                                }
+                            }
+                        }
+                    }else{
+                        if($country == null){
+                            $data = TripTourDestinationModel::where('is_domestic','=',$isDomestic)->take($param->getPageSize())
+                                ->orderBy($sortBy, $sortOrder)
+                                ->get();
+                        }else{
+                            $data = TripTourDestinationModel::where('is_domestic','=',$isDomestic)
+                                ->where('country','=',$country)
                                 ->take($param->getPageSize())
                                 ->orderBy($sortBy, $sortOrder)
                                 ->get();
@@ -159,126 +217,281 @@ class TourDestinationRepository implements ITourDestinationRepository
                 }
 
             } else {
-
-                if ($region == null) {
-                    $data = TripTourDestinationModel::skip($skipCount)->take($param->getPageSize())
-                        ->orderBy($sortBy, $sortOrder)
-                        ->get();
-                } else {
+                if($isDomestic == null){
                     if ($country == null) {
-                        $data = TripTourDestinationModel::where('region', '=', $region)
-                            ->skip($skipCount)->take($param->getPageSize())
+                        $data = TripTourDestinationModel::skip($skipCount)->take($param->getPageSize())
                             ->orderBy($sortBy, $sortOrder)
                             ->get();
                     } else {
-                        if ($city == null) {
-                            $data = TripTourDestinationModel::where('region', '=', $region)
-                                ->where('country', '=', $country)
+                        if ($region == null) {
+                            $data = TripTourDestinationModel::where('country', '=', $country)
                                 ->skip($skipCount)->take($param->getPageSize())
                                 ->orderBy($sortBy, $sortOrder)
                                 ->get();
                         } else {
-                            $data = TripTourDestinationModel::where('region', '=', $region)
-                                ->where('country', '=', $country)
-                                ->where('city', '=', $city)
+                            if ($city == null) {
+                                $data = TripTourDestinationModel::where('country', '=', $country)
+                                    ->where('region', '=', $region)
+                                    ->skip($skipCount)->take($param->getPageSize())
+                                    ->orderBy($sortBy, $sortOrder)
+                                    ->get();
+                            } else {
+                                $data = TripTourDestinationModel::where('country', '=', $country)
+                                    ->where('region', '=', $region)
+                                    ->where('city', '=', $city)
+                                    ->skip($skipCount)->take($param->getPageSize())
+                                    ->orderBy($sortBy, $sortOrder)
+                                    ->get();
+                            }
+                        }
+                    }
+                }else{
+                    if($isDomestic == 1){
+                        if ($country == null) {
+                            $data = TripTourDestinationModel::where('is_domestic','=',$isDomestic)
+                                ->skip($skipCount)->take($param->getPageSize())
+                                ->orderBy($sortBy, $sortOrder)
+                                ->get();
+                        } else {
+                            if ($region == null) {
+                                $data = TripTourDestinationModel::where('country', '=', $country)
+                                    ->skip($skipCount)->take($param->getPageSize())
+                                    ->orderBy($sortBy, $sortOrder)
+                                    ->get();
+                            } else {
+                                if ($city == null) {
+                                    $data = TripTourDestinationModel::where('country', '=', $country)
+                                        ->where('region', '=', $region)
+                                        ->skip($skipCount)->take($param->getPageSize())
+                                        ->orderBy($sortBy, $sortOrder)
+                                        ->get();
+                                } else {
+                                    $data = TripTourDestinationModel::where('country', '=', $country)
+                                        ->where('region', '=', $region)
+                                        ->where('city', '=', $city)
+                                        ->skip($skipCount)->take($param->getPageSize())
+                                        ->orderBy($sortBy, $sortOrder)
+                                        ->get();
+                                }
+                            }
+                        }
+                    }else{
+                        if($country == null){
+                            $data = TripTourDestinationModel::where('is_domestic','=',$isDomestic)
+                                ->skip($skipCount)->take($param->getPageSize())
+                                ->orderBy($sortBy, $sortOrder)
+                                ->get();
+                        }else{
+                            $data = TripTourDestinationModel::where('is_domestic','=',$isDomestic)
+                                ->where('country','=',$country)
                                 ->skip($skipCount)->take($param->getPageSize())
                                 ->orderBy($sortBy, $sortOrder)
                                 ->get();
                         }
                     }
                 }
+
 
             }
 
         } else {
-
             if ($skipCount == 0) {
-
-                if ($region == null) {
-                    $data = TripTourDestinationModel::where('destination_name', 'like', '%' . $param->getKeyword() . '%')
-                        ->orWhere('region', 'like', '%' . $param->getKeyword() . '%')
-                        ->orWhere('country', 'like', '%' . $param->getKeyword() . '%')
-                        ->orWhere('city', 'like', '%' . $param->getKeyword() . '%')
-                        ->take($param->getPageSize())
-                        ->orderBy($sortBy, $sortOrder)
-                        ->get();
-                } else {
+                if($isDomestic == null){
                     if ($country == null) {
-                        $data = TripTourDestinationModel::where(function ($q) use ($region) {
-                            $q->where('region', '=', $region);
-                        })->where(function ($q) use ($param) {
-                            $q->where('destination_name', 'like', '%' . $param->getKeyword() . '%')
-                                ->orWhere('country', 'like', '%' . $param->getKeyword() . '%')
-                                ->orWhere('city', 'like', '%' . $param->getKeyword() . '%');
-                        })->take($param->getPageSize())
+                        $data = TripTourDestinationModel::where('destination_name', 'like', '%' . $param->getKeyword() . '%')
+                            ->orWhere('region', 'like', '%' . $param->getKeyword() . '%')
+                            ->orWhere('country', 'like', '%' . $param->getKeyword() . '%')
+                            ->orWhere('city', 'like', '%' . $param->getKeyword() . '%')
+                            ->take($param->getPageSize())
                             ->orderBy($sortBy, $sortOrder)
                             ->get();
                     } else {
-                        if ($city == null) {
-                            $data = TripTourDestinationModel::where(function ($q) use ($region, $country) {
-                                $q->where('region', '=', $region)
-                                    ->where('country', '=', $country);
+                        if ($region == null) {
+                            $data = TripTourDestinationModel::where(function ($q) use ($country) {
+                                $q->where('country', '=', $country);
                             })->where(function ($q) use ($param) {
                                 $q->where('destination_name', 'like', '%' . $param->getKeyword() . '%')
+                                    ->orWhere('region', 'like', '%' . $param->getKeyword() . '%')
                                     ->orWhere('city', 'like', '%' . $param->getKeyword() . '%');
                             })->take($param->getPageSize())
                                 ->orderBy($sortBy, $sortOrder)
                                 ->get();
                         } else {
-                            $data = TripTourDestinationModel::where(function ($q) use ($region, $country, $city) {
-                                $q->where('region', '=', $region)
-                                    ->where('country', '=', $country)
-                                    ->where('city', '=', $city);
-                            })->where(function ($q) use ($param) {
-                                $q->where('destination_name', 'like', '%' . $param->getKeyword() . '%');
-                            })->take($param->getPageSize())
+                            if ($city == null) {
+                                $data = TripTourDestinationModel::where(function ($q) use ($region, $country) {
+                                    $q->where('country', '=', $country)
+                                        ->where('region', '=', $region);
+                                })->where(function ($q) use ($param) {
+                                    $q->where('destination_name', 'like', '%' . $param->getKeyword() . '%')
+                                        ->orWhere('city', 'like', '%' . $param->getKeyword() . '%');
+                                })->take($param->getPageSize())
+                                    ->orderBy($sortBy, $sortOrder)
+                                    ->get();
+                            } else {
+                                $data = TripTourDestinationModel::where(function ($q) use ($region, $country, $city) {
+                                    $q->where('country', '=', $country)
+                                        ->where('region', '=', $region)
+                                        ->where('city', '=', $city);
+                                })->where(function ($q) use ($param) {
+                                    $q->where('destination_name', 'like', '%' . $param->getKeyword() . '%');
+                                })->take($param->getPageSize())
+                                    ->orderBy($sortBy, $sortOrder)
+                                    ->get();
+                            }
+                        }
+                    }
+                }else{
+                    if($isDomestic == 1){
+                        if ($country == null) {
+                            $data = TripTourDestinationModel::where('is_domestic','=',$isDomestic)
+                                ->where(function ($q)use($param){
+                                    $q->where('destination_name', 'like', '%' . $param->getKeyword() . '%')
+                                        ->orWhere('region', 'like', '%' . $param->getKeyword() . '%')
+                                        ->orWhere('country', 'like', '%' . $param->getKeyword() . '%')
+                                        ->orWhere('city', 'like', '%' . $param->getKeyword() . '%');
+                                })
+                                ->take($param->getPageSize())
+                                ->orderBy($sortBy, $sortOrder)
+                                ->get();
+                        } else {
+                            if ($region == null) {
+                                $data = TripTourDestinationModel::where(function ($q) use ($country) {
+                                    $q->where('country', '=', $country);
+                                })->where(function ($q) use ($param) {
+                                    $q->where('destination_name', 'like', '%' . $param->getKeyword() . '%')
+                                        ->orWhere('region', 'like', '%' . $param->getKeyword() . '%')
+                                        ->orWhere('city', 'like', '%' . $param->getKeyword() . '%');
+                                })->take($param->getPageSize())
+                                    ->orderBy($sortBy, $sortOrder)
+                                    ->get();
+                            } else {
+                                if ($city == null) {
+                                    $data = TripTourDestinationModel::where(function ($q) use ($region, $country) {
+                                        $q->where('country', '=', $country)
+                                            ->where('region', '=', $region);
+                                    })->where(function ($q) use ($param) {
+                                        $q->where('destination_name', 'like', '%' . $param->getKeyword() . '%')
+                                            ->orWhere('city', 'like', '%' . $param->getKeyword() . '%');
+                                    })->take($param->getPageSize())
+                                        ->orderBy($sortBy, $sortOrder)
+                                        ->get();
+                                } else {
+                                    $data = TripTourDestinationModel::where(function ($q) use ($region, $country, $city) {
+                                        $q->where('country', '=', $country)
+                                            ->where('region', '=', $region)
+                                            ->where('city', '=', $city);
+                                    })->where(function ($q) use ($param) {
+                                        $q->where('destination_name', 'like', '%' . $param->getKeyword() . '%');
+                                    })->take($param->getPageSize())
+                                        ->orderBy($sortBy, $sortOrder)
+                                        ->get();
+                                }
+                            }
+                        }
+                    }else{
+                        if($country == null){
+                            $data = TripTourDestinationModel::where('is_domestic','=',$isDomestic)
+                                ->where(function ($q)use($param){
+                                    $q->where('destination_name', 'like', '%' . $param->getKeyword() . '%')
+                                        ->orWhere('region', 'like', '%' . $param->getKeyword() . '%')
+                                        ->orWhere('country', 'like', '%' . $param->getKeyword() . '%')
+                                        ->orWhere('city', 'like', '%' . $param->getKeyword() . '%');
+                                })
+                                ->take($param->getPageSize())
+                                ->orderBy($sortBy, $sortOrder)
+                                ->get();
+                        }else{
+                            $data = TripTourDestinationModel::where(function ($q) use ($country) {
+                                $q->where('country', '=', $country);
+                            })
+                                ->where(function ($q)use($param){
+                                    $q->where('destination_name', 'like', '%' . $param->getKeyword() . '%')
+                                        ->orWhere('region', 'like', '%' . $param->getKeyword() . '%')
+                                        ->orWhere('country', 'like', '%' . $param->getKeyword() . '%')
+                                        ->orWhere('city', 'like', '%' . $param->getKeyword() . '%');
+                                })
+                                ->take($param->getPageSize())
                                 ->orderBy($sortBy, $sortOrder)
                                 ->get();
                         }
                     }
                 }
 
-            } else {
 
-                if ($region == null) {
-                    $data = TripTourDestinationModel::where('destination_name', 'like', '%' . $param->getKeyword() . '%')
-                        ->orWhere('region', 'like', '%' . $param->getKeyword() . '%')
-                        ->orWhere('country', 'like', '%' . $param->getKeyword() . '%')
-                        ->orWhere('city', 'like', '%' . $param->getKeyword() . '%')
-                        ->orderBy($sortBy, $sortOrder)
-                        ->skip($skipCount)->take($param->getPageSize())
-                        ->get();
-                } else {
-                    if ($country == null) {
-                        $data = TripTourDestinationModel::where(function ($q) use ($region) {
-                            $q->where('region', '=', $region);
-                        })->where(function ($q) use ($param) {
-                            $q->where('destination_name', 'like', '%' . $param->getKeyword() . '%')
-                                ->orWhere('country', 'like', '%' . $param->getKeyword() . '%')
-                                ->orWhere('city', 'like', '%' . $param->getKeyword() . '%');
-                        })
-                            ->orderBy($sortBy, $sortOrder)
-                            ->skip($skipCount)->take($param->getPageSize())
-                            ->get();
-                    } else {
-                        if ($city == null) {
-                            $data = TripTourDestinationModel::where(function ($q) use ($region, $country) {
-                                $q->where('region', '=', $region)
-                                    ->where('country', '=', $country);
-                            })->where(function ($q) use ($param) {
-                                $q->where('destination_name', 'like', '%' . $param->getKeyword() . '%')
-                                    ->orWhere('city', 'like', '%' . $param->getKeyword() . '%');
-                            })
+            } else {
+                if($isDomestic == null){
+
+                }else{
+                    if($isDomestic == 1){
+                        if ($country == null) {
+                            $data = TripTourDestinationModel::where('is_domestic','=',$isDomestic)
+                                ->where(function ($q)use($param){
+                                    $q ->where('destination_name', 'like', '%' . $param->getKeyword() . '%')
+                                        ->orWhere('region', 'like', '%' . $param->getKeyword() . '%')
+                                        ->orWhere('country', 'like', '%' . $param->getKeyword() . '%')
+                                        ->orWhere('city', 'like', '%' . $param->getKeyword() . '%');
+                                })
                                 ->orderBy($sortBy, $sortOrder)
                                 ->skip($skipCount)->take($param->getPageSize())
                                 ->get();
                         } else {
-                            $data = TripTourDestinationModel::where(function ($q) use ($region, $country, $city) {
-                                $q->where('region', '=', $region)
-                                    ->where('country', '=', $country)
-                                    ->where('city', '=', $city);
+                            if ($region == null) {
+                                $data = TripTourDestinationModel::where(function ($q) use ($country) {
+                                    $q->where('country', '=', $country);
+                                })->where(function ($q) use ($param) {
+                                    $q->where('destination_name', 'like', '%' . $param->getKeyword() . '%')
+                                        ->orWhere('region', 'like', '%' . $param->getKeyword() . '%')
+                                        ->orWhere('city', 'like', '%' . $param->getKeyword() . '%');
+                                })
+                                    ->orderBy($sortBy, $sortOrder)
+                                    ->skip($skipCount)->take($param->getPageSize())
+                                    ->get();
+                            } else {
+                                if ($city == null) {
+                                    $data = TripTourDestinationModel::where(function ($q) use ($region, $country) {
+                                        $q->where('country', '=', $country)
+                                            ->where('region', '=', $region);
+                                    })->where(function ($q) use ($param) {
+                                        $q->where('destination_name', 'like', '%' . $param->getKeyword() . '%')
+                                            ->orWhere('city', 'like', '%' . $param->getKeyword() . '%');
+                                    })
+                                        ->orderBy($sortBy, $sortOrder)
+                                        ->skip($skipCount)->take($param->getPageSize())
+                                        ->get();
+                                } else {
+                                    $data = TripTourDestinationModel::where(function ($q) use ($region, $country, $city) {
+                                        $q->where('country', '=', $country)
+                                            ->where('region', '=', $region)
+                                            ->where('city', '=', $city);
+                                    })->where(function ($q) use ($param) {
+                                        $q->where('destination_name', 'like', '%' . $param->getKeyword() . '%');
+                                    })
+                                        ->orderBy($sortBy, $sortOrder)
+                                        ->skip($skipCount)->take($param->getPageSize())
+                                        ->get();
+                                }
+                            }
+                        }
+                    }else{
+                        if($country == null){
+                            $data = TripTourDestinationModel::where('is_domestic','=',$isDomestic)
+                                ->where(function ($q)use($param){
+                                    $q ->where('destination_name', 'like', '%' . $param->getKeyword() . '%')
+                                        ->orWhere('region', 'like', '%' . $param->getKeyword() . '%')
+                                        ->orWhere('country', 'like', '%' . $param->getKeyword() . '%')
+                                        ->orWhere('city', 'like', '%' . $param->getKeyword() . '%');
+                                })
+                                ->orderBy($sortBy, $sortOrder)
+                                ->skip($skipCount)->take($param->getPageSize())
+                                ->get();
+                        }else{
+                            $data = TripTourDestinationModel::where(function ($q) use ($country,$isDomestic) {
+                                $q->where('country', '=', $country)
+                                    ->where('is_domestic','=',$isDomestic);
                             })->where(function ($q) use ($param) {
-                                $q->where('destination_name', 'like', '%' . $param->getKeyword() . '%');
+                                $q->where('destination_name', 'like', '%' . $param->getKeyword() . '%')
+                                    ->orWhere('region', 'like', '%' . $param->getKeyword() . '%')
+                                    ->orWhere('city', 'like', '%' . $param->getKeyword() . '%');
                             })
                                 ->orderBy($sortBy, $sortOrder)
                                 ->skip($skipCount)->take($param->getPageSize())
@@ -301,16 +514,51 @@ class TourDestinationRepository implements ITourDestinationRepository
     }
 
 
-    public function isDestinationExist($destinationName, $country, $city, $id = null)
+    public function isDestinationExist($destinationName,$isDomestic = 1,$country,$region = null,$city,$id = null)
     {
-        if ($id == null) {
-            $result = TripTourDestinationModel::where('country', '=', $country)->where('city', '=', $city)->where('destination_name', '=', $destinationName)->count();
-        } else {
-            $result = TripTourDestinationModel::where(function ($q) use ($destinationName, $country, $city) {
-                $q->where('country', '=', $country)->where('city', '=', $city)->where('destination_name', '=', $destinationName);
-            })->where('id', '<>', $id)->count();
+        if($isDomestic == 1){
+            if ($id == null) {
+                $result = TripTourDestinationModel::where('country', '=', $country)->where('region','=',$region)->where('city', '=', $city)->where('destination_name', '=', $destinationName)->count();
+            } else {
+                $result = TripTourDestinationModel::where(function ($q) use ($destinationName, $country,$region, $city) {
+                    $q->where('country', '=', $country)->where('region','=',$region)->where('city', '=', $city)->where('destination_name', '=', $destinationName);
+                })->where('id', '<>', $id)->count();
+            }
+        }else{
+            if ($id == null) {
+                $result = TripTourDestinationModel::where('country', '=', $country)->where('destination_name', '=', $destinationName)->count();
+            } else {
+                $result = TripTourDestinationModel::where(function ($q) use ($destinationName, $country) {
+                    $q->where('country', '=', $country)->where('destination_name', '=', $destinationName);
+                })->where('id', '<>', $id)->count();
+            }
         }
+
 
         return ($result > 0);
     }
+
+    public function showAllByArea($isDomestic)
+    {
+        $tourDestinations = TripTourDestinationModel::where('is_domestic','=',$isDomestic)->get();
+        $data = [];
+
+        foreach ($tourDestinations as $tourDestination){
+            $data[] = [
+                'id' => $tourDestination->id,
+                'destinationName' => $tourDestination->destination_name,
+                'isDomestic' => $tourDestination->is_domestic,
+                'region' => $tourDestination->region,
+                'country' => $tourDestination->country,
+                'city' => $tourDestination->city,
+                'description' => $tourDestination->description,
+                'createdAt' => $tourDestination->created_at->toDateString(),
+                'updatedAt' => $tourDestination->updated_at->toDateString()
+            ];
+        }
+
+        return $data;
+    }
+
+
 }

@@ -58,7 +58,12 @@ Route::group(['middleware' => 'jwt.auth'], function () {
     Route::post('/tour-category/delete/{id}','TourCategoryController@delete');
 
     /*tour destination */
-
+    Route::post('/tour-destination/pagination','TourDestinationController@pagination');
+    Route::post('/tour-destination/create','TourDestinationController@create');
+    Route::get('/tour-destination/read/{id}','TourDestinationController@read');
+    Route::get('/tour-destination/all','TourDestinationController@showAll');
+    Route::post('/tour-destination/update','TourDestinationController@update');
+    Route::post('/tour-destination/delete/{id}','TourDestinationController@delete');
 
     Route::post('/get-air-lines-list', 'ApiDarmawisataController@getAirLineList');
     Route::post('/get-nationality-list', 'ApiDarmawisataController@getNationalityList');

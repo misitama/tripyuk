@@ -9,7 +9,7 @@
                 <li class="active">Tour Category</li>
             </ol>
 
-            <h1>Users</h1>
+            <h1>Tour Category</h1>
             <div class="options">
                 <div class="btn-toolbar">
                     <a href="#" @click.prevent="showModal('add')" class="btn btn-primary"><i
