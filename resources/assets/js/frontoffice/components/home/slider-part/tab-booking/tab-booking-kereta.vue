@@ -7,7 +7,7 @@
                 <label for="tujuan">Kota Asal</label>
                 <div class="input-group">
                     <div class="input-group-prepend">
-                        <span class="input-group-text bg-white-transparent color-white" id="basic-addon1"> <i class="fa fa-plane"></i> </span>
+                        <span class="input-group-text bg-white-transparent color-white" id="basic-addon1"> <i class="fa fa-train"></i> </span>
                     </div>
                     <input id="airportasal" type="text" class="form-control bg-white-transparent color-white" placeholder="Kota Asal" v-model="departName">
                     <input type="hidden" v-model="departId">
@@ -19,7 +19,7 @@
                 <label for="tujuan">Kota Tujuan</label>
                 <div class="input-group">
                     <div class="input-group-prepend">
-                        <span class="input-group-text bg-white-transparent color-white" id="basic-addon1"> <i class="fa fa-plane"></i> </span>
+                        <span class="input-group-text bg-white-transparent color-white" id="basic-addon1"> <i class="fa fa-train"></i> </span>
                     </div>
                     <input id="airporttujuan" type="text" class="form-control bg-white-transparent color-white" placeholder="Kota Tujuan" v-model="arrivalName">
                     <input type="hidden" v-model="arrivalId">
@@ -33,7 +33,7 @@
                 <label for="tujuan"><h6>Jumlah Penumpang</h6></label>
                 <div class="row no-gutters">
 
-                    <div class="col-lg-4 pr-2">
+                    <div class="col-lg-6 pr-2">
                         <label for="tujuan">Dewasa</label>
                         <div class="input-group">
                             <div class="input-group-prepend">
@@ -50,7 +50,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-4 pr-2 pl-1">
+                    <div class="col-lg-6 pr-2 pl-1">
                         <label for="tujuan">Anak</label>
                         <div class="input-group">
                             <div class="input-group-prepend">
@@ -61,23 +61,6 @@
                             <input type="text" class="form-control bg-white-transparent color-white" placeholder="Jumlah" v-model="paxChildren">
                             <div class="input-group-append">
                                 <button v-on:click="pluspaxChildren" class="btn btn-outline-secondary bg-white-transparent border-color-secondary" type="button">
-                                    <i class="fa fa-plus color-white"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 pl-1">
-                        <label for="tujuan">Bayi</label>
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <button v-on:click="minuspaxInfant" class="btn btn-outline-secondary bg-white-transparent border-color-secondary" type="button">
-                                    <i class="fa fa-minus color-white"></i>
-                                </button>
-                            </div>
-                            <input type="text" class="form-control bg-white-transparent color-white" placeholder="Jumlah" v-model="paxInfant">
-                            <div class="input-group-append">
-                                <button v-on:click="pluspaxInfant" class="btn btn-outline-secondary bg-white-transparent border-color-secondary" type="button">
                                     <i class="fa fa-plus color-white"></i>
                                 </button>
                             </div>

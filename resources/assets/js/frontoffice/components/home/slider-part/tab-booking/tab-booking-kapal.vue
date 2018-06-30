@@ -7,7 +7,7 @@
                 <label for="tujuan">Kota Asal</label>
                 <div class="input-group">
                     <div class="input-group-prepend">
-                        <span class="input-group-text bg-white-transparent color-white" id="basic-addon1"> <i class="fa fa-plane"></i> </span>
+                        <span class="input-group-text bg-white-transparent color-white" id="basic-addon1"> <i class="fa fa-ship"></i> </span>
                     </div>
                     <input id="airportasal" type="text" class="form-control bg-white-transparent color-white" placeholder="Kota Asal" v-model="departName">
                     <input type="hidden" v-model="departId">
@@ -19,7 +19,7 @@
                 <label for="tujuan">Kota Tujuan</label>
                 <div class="input-group">
                     <div class="input-group-prepend">
-                        <span class="input-group-text bg-white-transparent color-white" id="basic-addon1"> <i class="fa fa-plane"></i> </span>
+                        <span class="input-group-text bg-white-transparent color-white" id="basic-addon1"> <i class="fa fa-ship"></i> </span>
                     </div>
                     <input id="airporttujuan" type="text" class="form-control bg-white-transparent color-white" placeholder="Kota Tujuan" v-model="arrivalName">
                     <input type="hidden" v-model="arrivalId">

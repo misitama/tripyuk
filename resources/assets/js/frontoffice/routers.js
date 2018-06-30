@@ -43,9 +43,13 @@ import AddTourItem from './components/tour/tour-kustom/tour-kustom-part/tour-kus
 import PaketKustomTour from './components/tour/tour-kustom/tour-kustom-part/tour-kustom-part-paket.vue';
 import DataTraveler from './components/tour/tour-kustom/tour-kustom-part/tour-kustom-part-data-traveler.vue';
 import ReviewKustomTour from './components/tour/tour-kustom/tour-kustom-part/tour-kustom-part-review.vue';
+import BayarKustomTour from './components/pembayaran/pembayaran-kustom-tour.vue';
 
 // hotel komponen
-import Hotel from './components/hotel/hotel-index.vue';
+import MainHotel from './components/hotel/hotel-index.vue';
+import Hotel from './components/hotel/hotel-form.vue';
+import CariHotel from './components/hotel/hotel-part/hotel-part-cari.vue';
+import DetailHotel from './components/hotel/hotel-part/hotel-part-detail.vue';
 
 // penjemputan komponen
 import Penjemputan from './components/penjemputan/penjemputan-index.vue';
@@ -207,7 +211,12 @@ export default [
                 path : 'review-kustom-tour',
                 name : 'reviewkustomtour',
                 component : ReviewKustomTour
-            }
+            },
+            {
+                path : 'bayar',
+                name : 'bayarkustomtour',
+                component : BayarKustomTour
+            },
         ]
     },
 
@@ -215,7 +224,24 @@ export default [
     {
         path : '/hotel',
         name : 'hotel',
-        component : Hotel
+        component : MainHotel,
+        children : [
+            {
+                path : '/',
+                name : 'mainhotel',
+                component : Hotel
+            },
+            {
+                path : 'cari-hotel',
+                name : 'carihotel',
+                component : CariHotel
+            },
+            {
+                path : 'detail-hotel',
+                name : 'detailhotel',
+                component : DetailHotel
+            }
+        ]
     },
 
     // penjemputan route

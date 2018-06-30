@@ -204,7 +204,7 @@
                         </div>
                     </div>
                     <div class="col dropdown">
-                        <router-link class="second-menu pt-2 pb-2" :to="{ name: 'hotel' }">
+                        <router-link class="second-menu pt-2 pb-2" :to="{ name: 'mainhotel' }">
                             <span class="icon-menu-secondary">
                                 <img src="frontoffice/icons/hotel.png" alt="">
                             </span>

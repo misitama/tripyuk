@@ -90,7 +90,7 @@
             </div>
 
             <div class="form-group col-lg-4 text-right">
-                <input class="btn btn-primary btn-block pr-5 pl-5" type="submit" name="submit" value="Cari Hotel">
+                <router-link class="btn btn-primary btn-block pr-5 pl-5" :to="{ name: 'carihotel' }">Cari Hotel</router-link>
             </div>
 
         </div>
