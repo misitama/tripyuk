@@ -29,35 +29,41 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <form class="form-inline">
+                                    <form>
                                         <div class="form-group">
-                                            <label for="filterIsDomestic">Domestic/Inter</label>
-                                            <select id="filterIsDomestic" name="filterIsDomestic" class="form-control"
-                                                    v-model="filterIsDomestic">
-                                                <option></option>
-                                                <option :value="1">Domestic</option>
-                                                <option :value="0">International</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="filterCountry">Country</label>
-                                            <select id="filterCountry" class="form-control" v-model="filterCountry">
-                                                <option></option>
-                                                <option v-for="country in countries" :value="country.id">{{country.label}}</option>
-                                            </select>
-                                        </div>
-                                        <div v-if="filterIsDomestic == 1">
-                                            <div class="form-group">
-                                                <label for="filterRegion">Region</label>
-                                                <select id="filterRegion" class="form-control" v-model="filterRegion">
-                                                    <option></option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="filterCity">City</label>
-                                                <select id="filterCity" class="form-control" v-model="filterCity">
-                                                    <option>Choose</option>
-                                                </select>
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <select id="filterIsDomestic" name="filterIsDomestic" class="form-control"
+                                                            v-model="filterIsDomestic">
+                                                        <option></option>
+                                                        <option :value="1">Domestic</option>
+                                                        <option :value="0">International</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div v-if="filterIsDomestic == 1">
+                                                        <select id="filterCountry" class="form-control" v-model="filterCountry">
+                                                            <option></option>
+                                                            <option v-for="country in countries" :value="country.id">{{country.label}}</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <div v-if="filterIsDomestic == 1">
+                                                    <div class="col-md-4">
+                                                        <select id="filterRegion" class="form-control" v-model="filterRegion">
+                                                            <option></option>
+                                                            <option v-for="region in regions" :value="region.id">{{region.label}}</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <select id="filterCity" class="form-control" v-model="filterCity">
+                                                            <option>Choose</option>
+                                                            <option v-for="country in countries" :value="country.id">{{country.label}}</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
                                             </div>
                                         </div>
                                     </form>
@@ -118,15 +124,17 @@
                                         </label>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="country" class="col-md-3 control-label">Country</label>
-                                    <div class="col-md-9">
-                                        <select class="form-control" id="country" name="country"
-                                                v-model="tourDestination.country">
-                                            <option v-for="country in countries" :value="country.id">{{country.label}}</option>
-                                        </select>
-                                    </div>
-                                </div>
+                               <div v-if="tourDestination.isDomestic == 0">
+                                   <div class="form-group">
+                                       <label for="country" class="col-md-3 control-label">Country</label>
+                                       <div class="col-md-9">
+                                           <select class="form-control" id="country" name="country"
+                                                   v-model="tourDestination.country">
+                                               <option v-for="country in countries" :value="country.id">{{country.label}}</option>
+                                           </select>
+                                       </div>
+                                   </div>
+                               </div>
                                 <div v-if="tourDestination.isDomestic == 1">
                                     <div class="form-group">
                                         <label for="region" class="col-md-3 control-label">Region</label>
@@ -134,17 +142,19 @@
                                             <select class="form-control" id="region" name="region"
                                                     v-model="tourDestination.region">
                                                 <option></option>
+                                                <option v-for="region in regions" :value="region.id">{{region.label}}</option>
                                             </select>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="city" class="col-md-3 control-label">City</label>
-                                    <div class="col-md-9">
-                                        <select class="form-control" id="city" name="city"
-                                                v-model="tourDestination.city">
-                                            <option></option>
-                                        </select>
+                                    <div class="form-group">
+                                        <label for="city" class="col-md-3 control-label">City</label>
+                                        <div class="col-md-9">
+                                            <select class="form-control" id="city" name="city"
+                                                    v-model="tourDestination.city">
+                                                <option></option>
+                                                <option v-for="country in countries" :value="country.id">{{country.label}}</option>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -230,10 +240,6 @@
             }
         },
         watch: Watch,
-        created(){
-            // let app = this;
-            // app.getDataCountry();
-        },
         mounted() {
             let app = this;
             app.resetState();
@@ -243,6 +249,30 @@
             $('#filterIsDomestic').select2({
                 width: '100%',
                 placeholder: 'Choose intern or domestic'
+            }).on('change',function () {
+                app.filterIsDomestic = $(this).val();
+                app.isChangeSelect = true;
+            });
+
+            $('#filterRegion').select2({
+                width:'100%',
+                placeholder:'Choose region'
+            });
+            $('#filterCity').select2({
+                width:'100%',
+                placeholder:'Choose city'
+            });
+            $('#country').select2({
+                width:'100%',
+                placeholder:'Choose country'
+            });
+            $('#region').select2({
+                width:'100%',
+                placeholder:'Choose region'
+            });
+            $('#city').select2({
+                width:'100%',
+                placeholder:'Choose city'
             });
         },
         methods: Methods,

@@ -115,28 +115,6 @@ export default {
         app.modalTitle = '';
 
     },
-    createSelect2Component(){
-        $('#filterIsDomestic').select2({
-            width: '100%',
-            placeholder: 'Choose intern or domestic'
-        });
-        $('#country').select2({
-            width: '100%',
-            placeholder: 'Choose country'
-        });
-        $('#filterCountry').select2({
-            width: '100%',
-            placeholder: 'Choose country'
-        });
-        $('#region').select2({
-            width: '100%',
-            placeholder: 'Choose region'
-        });
-        $('#city').select2({
-            width: '100%',
-            placeholder: 'Choose country'
-        });
-    },
     loadForm(state) {
         let app = this;
         app.state = state;
@@ -174,6 +152,7 @@ export default {
                     placeholder: 'Choose country'
                 }).on('change', function () {
                     app.filterCountry = $(this).val();
+                    app.tourDestination.country = $(this).val();
                     app.isChangeSelect = true;
                 });
 
@@ -181,8 +160,18 @@ export default {
                     width: '100%',
                     placeholder: 'Choose country'
                 }).on('change', function () {
+                    console.log($(this).val());
                     app.filterCountry = $(this).val();
                     app.isChangeSelect = true;
+                });
+
+                $('#filterRegion').select2({
+                    width:'100%',
+                    placeholder:'Choose region'
+                });
+                $('#filterCity').select2({
+                    width:'100%',
+                    placeholder:'Choose city'
                 });
             },
             error:function (error) {
@@ -191,4 +180,61 @@ export default {
             }
         });
     },
+    getDataRegion(){
+        let app = this;
+        let loading = app.$loading.show();
+
+        app.$http.get('/province/all')
+            .then((response)=>{
+                loading.hide();
+                app.regions=response.data.result;
+                $('#filterRegion').select2({
+                    width:'100%',
+                    placeholder:'Choose province',
+                }).on('change',function () {
+                    app.filterRegion = $(this).val();
+                    app.isChangeSelect = true;
+                });
+
+                $('#region').select2({
+                    width:'100%',
+                    placeholder:'Choose province',
+                }).on('change',function () {
+                    app.filterRegion = $(this).val();
+                    app.tourDestination.region = $(this).val();
+                    app.isChangeSelect = true;
+                });
+            })
+            .catch((error)=>{
+                loading.hide();
+                console.log(error);
+            });
+    },
+    getDataCity(){
+        let app = this;
+        let loading = app.$loading.show();
+
+        app.$http.get('/regency/read-by-province/'+app.tourDestination.region)
+            .then((response)=>{
+                loading.hide();
+                app.cities = response.data.result;
+                $('#city').select2({
+                    width:'100%',
+                    placeholder:'Choose city'
+                }).on('change',function () {
+                    app.tourDestination.city = $(this).val();
+                });
+
+                $('#filterCity').select2({
+                    width:'100%',
+                    placeholder:'Choose city'
+                }).on('change',function () {
+                    app.filterCity = $(this).val();
+                });
+            })
+            .catch((error)=>{
+                loading.hide();
+                console.log(error);
+            })
+    }
 }
