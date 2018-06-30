@@ -123,7 +123,11 @@
                                 </router-link>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link pl-4 pr-4 nav-bordered" href="#"><span class="icon-menu"><img src="frontoffice/icons/kustom-tour.png"/></span> Kustom Tour <span class="sr-only">(current)</span></a>
+                                <router-link class="nav-link pl-4 pr-4 nav-bordered" :to="{ name : 'paketkustomtour' }">
+                                    <span class="icon-menu">
+                                        <img src="frontoffice/icons/kustom-tour.png"/>
+                                    </span> Kustom Tour <span class="sr-only">(current)</span>
+                                </router-link>
                             </li>
 
                         </ul>

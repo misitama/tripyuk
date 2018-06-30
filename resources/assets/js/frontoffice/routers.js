@@ -38,6 +38,11 @@ import Tour from './components/tour/tour-index.vue';
 import TourDomestik from './components/tour/tour-domestik.vue';
 import DetailTourDomestik from './components/tour/tour-domestik/tour-domestik-detail.vue';
 import TourInternational from './components/tour/tour-international.vue';
+import KustomTour from './components/tour/tour-kustom/tour-kustom-index.vue';
+import AddTourItem from './components/tour/tour-kustom/tour-kustom-part/tour-kustom-part-add-item.vue';
+import PaketKustomTour from './components/tour/tour-kustom/tour-kustom-part/tour-kustom-part-paket.vue';
+import DataTraveler from './components/tour/tour-kustom/tour-kustom-part/tour-kustom-part-data-traveler.vue';
+import ReviewKustomTour from './components/tour/tour-kustom/tour-kustom-part/tour-kustom-part-review.vue';
 
 // hotel komponen
 import Hotel from './components/hotel/hotel-index.vue';
@@ -177,6 +182,33 @@ export default [
         path : '/tour-international',
         name : 'tourinternational',
         component : TourInternational
+    },
+    {
+        path : '/kustom-tour',
+        name : 'kustomtour',
+        component : KustomTour,
+        children : [
+            {
+                path : '/',
+                name : 'paketkustomtour',
+                component : PaketKustomTour
+            },
+            {
+                path : 'add-tour-item',
+                name : 'addtouritem',
+                component : AddTourItem
+            },
+            {
+                path : 'data-traveler',
+                name : 'datatraveler',
+                component : DataTraveler
+            },
+            {
+                path : 'review-kustom-tour',
+                name : 'reviewkustomtour',
+                component : ReviewKustomTour
+            }
+        ]
     },
 
     // hotel route
