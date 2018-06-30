@@ -4,7 +4,6 @@ export default{
         if(val !=''){
             $('#tblTourDestination').bootgrid('reload');
             app.getDataCountry();
-            $('#tblTourDestination').bootgrid('reload');
         }
     },
     filterCountry(val){
